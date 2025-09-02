@@ -1,0 +1,77 @@
+﻿
+pudes generarme un txt con el contexto de los requisitos pedidos en los documentos, sobre todo tecnicos, para pasarselo a mi agente ia y entienda mejor el contexto del proyecto
+Aquí tienes un texto plano listo para pegar en tu agente IA. Resume el contexto técnico y los requisitos clave del proyecto según los documentos.
+Proyecto: Tienda online básica + módulo administrador (frontend estático)
+Tecnologías y enfoque
+    • HTML5 semántico: usar header, nav, main, section, article, footer; hipervínculos entre todas las páginas; incluir imágenes, botones, videos embebidos y formularios según corresponda.[1]
+    • CSS externo: al menos una hoja de estilos personalizada enlazada externamente y consistente en todas las páginas; se permite una hoja separada para admin.[1]
+    • JavaScript: validaciones de formularios con mensajes de error y sugerencias en contexto; validación en tiempo real cuando aplique; lógica del carrito; uso de arreglos JS como “fuente de datos” y persistencia en LocalStorage.[2][1]
+    • Colaboración: trabajo en repositorio remoto (GitHub) con commits descriptivos y distribución de tareas; integración continua del trabajo del equipo.[1]
+Vistas requeridas (tienda pública)
+    • Home: navegación hacia demás páginas; logo y carrito visible; componente principal con imagen/texto de la tienda; listado de productos (imagen, nombre, precio) y footer.[2]
+    • Productos: grilla/lista con imagen, nombre, precio y botón “Añadir”; clic lleva a detalle; el carrito debe funcionar aquí.[2]
+    • Detalle de producto: ficha con nombre, precio, descripción y selector de cantidad; botón “Añadir al carrito”; relacionados opcional.[2]
+    • Nosotros: página informativa de la tienda/desarrolladores.[2]
+    • Blogs: tarjetas con imagen, título y descripción corta; 2 páginas de detalle con contenido libre.[2]
+    • Contacto: formulario de contacto con validaciones (ver reglas).[2]
+    • Registro: formulario de alta de usuario con validaciones (equivalente a crear usuario en admin).[2]
+    • Login: formulario de inicio de sesión con validaciones (ver reglas).[2]
+    • Carrito: vista para mostrar contenido del carrito, totales y acciones (agregar/quitar/ajustar) persistido en LocalStorage.[2]
+Vistas requeridas (administrador)
+    • Home admin: menú lateral visible y contenido central; diseño libre.[2]
+    • Productos (CRUD): listado y formularios “nuevo/editar” con validaciones de negocio (ver reglas).[2]
+    • Usuarios (CRUD): listado y formularios “nuevo/editar” con validaciones de identidad/contacto/dirección/rol (ver reglas).[2]
+    • Roles en interfaz: Administrador (acceso total), Vendedor (solo listas y detalles de productos y órdenes), Cliente (solo tienda); ocultar accesos no permitidos.[2]
+Reglas de negocio y validaciones (JS)
+    • Login:
+        ◦ Correo: requerido, máx. 100 caracteres, dominios permitidos: duoc.cl, profesor.duoc.cl, gmail.com.[2]
+        ◦ Contraseña: requerida, longitud entre 4 y 10 caracteres.[2]
+    • Contacto:
+        ◦ Nombre: requerido, máx. 100 caracteres.[2]
+        ◦ Correo: máx. 100, dominios permitidos: duoc.cl, profesor.duoc.cl, gmail.com.[2]
+        ◦ Comentario: requerido, máx. 500 caracteres.[2]
+    • Carrito:
+        ◦ Fuente de datos: arreglo de productos en JS; render de lista/detalle desde ese arreglo.[2]
+        ◦ Operaciones: agregar, eliminar, actualizar cantidad, recalcular totales.[2]
+        ◦ Persistencia: guardar carrito en LocalStorage; restaurar al recargar.[2]
+    • Producto (admin):
+        ◦ Código: requerido; texto; min 3 caracteres.[2]
+        ◦ Nombre: requerido; máx. 100.[2]
+        ◦ Descripción: opcional; máx. 500.[2]
+        ◦ Precio: requerido; min 0; permite decimales; si 0, considerar “FREE”.[2]
+        ◦ Stock: requerido; min 0; enteros.[2]
+        ◦ Stock crítico: opcional; min 0; enteros; si stock ≤ crítico, mostrar alerta.[2]
+        ◦ Categoría: requerido; select.[2]
+        ◦ Imagen: opcional.[2]
+    • Usuario (admin):
+        ◦ RUN: requerido; sin puntos ni guion (ej. 19011022K); longitud 7–9; validar formato.[2]
+        ◦ Nombre: requerido; máx. 50.[2]
+        ◦ Apellidos: requeridos; máx. 100.[2]
+        ◦ Correo: requerido; máx. 100; dominios: duoc.cl, profesor.duoc.cl, gmail.com.[2]
+        ◦ Fecha de nacimiento: opcional.[2]
+        ◦ Tipo de usuario: select con opciones Administrador, Cliente, Vendedor.[2]
+        ◦ Región y Comuna: cargar desde arreglo JS; al cambiar región, actualizar comunas.[2]
+        ◦ Dirección: requerida; máx. 300.[2]
+Estándares de interfaz y estructura
+    • Navegación: hipervínculos entre todas las páginas; menús y barras laterales cuando aplique; carrito visible en tienda.[2]
+    • CSS: hojas externas enlazadas; consistencia de estilos entre páginas; preferir una global (main.css) y una para admin (admin.css).[1]
+    • JS: separar main.js (interacciones generales), validaciones.js (formularios) y carrito.js (operaciones y persistencia); archivos data/*.js para productos y regiones/comunas.[2]
+    • Acceso admin: vistas “protegidas” conceptualmente; al menos reflejar restricciones de rol en la interfaz ocultando opciones.[2]
+Documentación obligatoria
+    • Planilla de Requerimientos: registrar requisitos (funcionales/no funcionales), clasificación, actores, descripción, criterios de aceptación y estado; usar como base de trazabilidad.[3]
+    • ERS (IEEE 830) preliminar: incluir Introducción (propósito, alcance, definiciones, referencias, visión), Descripción general (perspectiva, funciones, usuarios, restricciones, supuestos, futuros) y Requisitos específicos (interfaces, funcionales, no funcionales: rendimiento, seguridad, fiabilidad, disponibilidad, mantenibilidad, portabilidad).[4]
+Evaluación y presentación
+    • Encargo: 40% del parcial; revisar que HTML semántico, CSS externo y validaciones JS estén implementados y navegables; repositorio con commits descriptivos y trabajo colaborativo.[1]
+    • Presentación: 60% del parcial; 15+5 minutos; explicar estructura HTML, uso de CSS externo, validaciones JS y colaboración en GitHub con evidencias.[1]
+    • Entregables: enlace GitHub público del frontend, ZIP del frontend, ERS preliminar.[1]
+Notas de implementación
+    • No se exige nombre específico del repositorio; usar uno claro y relacionado con la tienda de teclados y componentes.[1]
+    • Mantener mensajes de error y sugerencias claros en formularios, y bloquear envío si hay errores; evidenciar en la demo.[1][2]
+    • Carrito debe funcionar al menos en Productos y Detalle; persistir en LocalStorage para restauración tras recarga.[2]
+Este contexto recoge lo esencial para que un agente IA comprenda el alcance, las vistas, las validaciones y la organización técnica esperada del proyecto, alineado con los anexos y la rúbrica.[4][3][1][2]
+⁂
+
+    1. DSY1104-Evaluacion-Parcial-1_EE_EP_Estudiante.pdf           
+    2. DSY1104-Evaluacion-Parcial-1-Anexo-1-Instrucciones.pdf                                            
+    3. DSY1104-Evaluacion-Parcial-1-Anexo-2-Planilla-de-Requerimientos.xlsx  
+    4. DSY1104-Evaluacion-Parcial-1-Anexo-4-ERS-Especificacion-de-Requisitos-del-software.docx  
