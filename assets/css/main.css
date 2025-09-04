@@ -5,9 +5,9 @@ header {
   background-color: #f8f8f8; /* Opcional: color de fondo del header */
 }
 
-.logo {
-  max-width: 120px; /* Ajusta el tamaño del logo */
-  height: auto;
+.logotipo {
+  max-width: 200px; /* Ajusta el tamaño máximo del logo */
+  height: auto; /* Mantiene la proporción del logo */
 }
 
 .intro {
@@ -120,5 +120,18 @@ body {
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   padding: 2rem;
+  font-family: 'Jersey 10', monospace;
+}
+
+.Ubicacion {
+  max-width: 800px;
+  margin: 2rem auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 2rem;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  word-break: break-word;
   font-family: 'Jersey 10', monospace;
 }
