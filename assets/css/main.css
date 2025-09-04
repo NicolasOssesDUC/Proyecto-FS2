@@ -1,13 +1,29 @@
-header {
-  width: 100%;
-  text-align: center; /* Centra el logo horizontalmente */
-  padding: 10px 0; /* Espaciado arriba y abajo */
-  background-color: #f8f8f8; /* Opcional: color de fondo del header */
+.navbar-brand {
+  position: relative;
+  min-width: 200px; /* Ajusta según el diseño */
 }
 
-.logo {
-  max-width: 120px; /* Ajusta el tamaño del logo */
-  height: auto;
+.navbar-logo {
+  height: 100px;
+  width: auto;
+  position: absolute;
+  top: 50%;
+  left: 1.5rem; /* Ajusta según el diseño */
+  transform: translateY(-50%);
+}
+
+.navbar.bg-custom {
+  background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco translúcido */
+  backdrop-filter: blur(10px); /* Desenfoque del fondo */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
 .intro {
@@ -38,6 +54,7 @@ body {
   background-color: rgba(255, 255, 255, 0.5); /* muy translúcido */
   backdrop-filter: blur(4px); /* desenfoque del fondo que se ve a través */
   padding: 20px;
+  padding-top: 70px;
   text-align: justify;
   
 }
@@ -120,5 +137,18 @@ body {
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   padding: 2rem;
+  font-family: 'Jersey 10', monospace;
+}
+
+.Ubicacion {
+  max-width: 800px;
+  margin: 2rem auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 2rem;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  word-break: break-word;
   font-family: 'Jersey 10', monospace;
 }
