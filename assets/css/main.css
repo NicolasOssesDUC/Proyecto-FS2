@@ -28,7 +28,7 @@
 
 .intro {
   height: 800px; /* Altura del banner */
-  background-image: url('../img/Fondo.png'); /* Pon tu banner */
+  background-image: url('../img/keyboards.jpg'); /* Pon tu banner */
   background-attachment: fixed; /* Efecto parallax */
   background-position: center;
   background-repeat: no-repeat;
@@ -43,18 +43,15 @@
   text-shadow: 5px 5px 5px rgba(255, 255, 255, 0.75);
   font-family: 'Jersey 10', monospace; /* ejemplo para estilo 8-bit */
   font-size: 3rem;
+  border-radius:15px;
+  margin-top: 50px;
 }
 
 
 body {
-  background-image: url('../img/Fondo.png');
-  background-attachment: fixed; /* clave para parallax */
-  background-size: cover;
-  background-position: center;
-  background-color: rgba(255, 255, 255, 0.5); /* muy translúcido */
-  backdrop-filter: blur(4px); /* desenfoque del fondo que se ve a través */
+  background-color: #fff;
+  font-family: 'jersey 10', monospace;
   padding: 20px;
-  padding-top: 70px;
   text-align: justify;
   
 }
