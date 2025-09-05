@@ -40,7 +40,13 @@
   color:rgb(0, 0, 0);
   text-align: center;
   font-size: 2rem;
-  text-shadow: 5px 5px 5px rgba(255, 255, 255, 0.75);
+  text-shadow:
+    0 0 5px rgb(255, 255, 255),
+    0 0 10px rgb(255, 255, 255),
+    0 0 20px rgb(255, 255, 255),
+    0 0 40px rgb(255, 255, 255),
+    0 0 80px rgb(255, 255, 255);
+  /*text-shadow: 5px 5px 5px rgba(255, 255, 255, 0.75);*/
   font-family: 'Jersey 10', monospace; /* ejemplo para estilo 8-bit */
   font-size: 3rem;
   border-radius:15px;
@@ -121,6 +127,7 @@ body {
 }
 
 .productos-recientes h2 {
+  margin: 70px;
   text-align: center;
   font-family: 'Jersey 10', monospace;
   font-size: 2.5rem;
@@ -149,3 +156,15 @@ body {
   word-break: break-word;
   font-family: 'Jersey 10', monospace;
 }
+
+.separador-navbar { 
+  margin-top: 110px; /* Ajusta según la altura de la navbar */
+}
+
+.productos h1 {
+  text-align: center;
+  font-family: 'Jersey 10', monospace;
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+}
+

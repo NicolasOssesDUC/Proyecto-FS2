@@ -11,7 +11,8 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-custom">
+    <!-- Navbar debajo del logo -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         <a class="navbar-brand" href="index.html">
             <img src="assets/img/logokb.png" alt="logo " class="navbar-logo">
@@ -25,8 +26,15 @@
             <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
             </li>
-            <li class="nav-item">
-            <a class="nav-link" href="productos.html">Productos</a>
+            <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="productos.html" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Productos  
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="teclados.html">Teclados</a></li>
+                <li><a class="dropdown-item" href="keycaps.html">Key Caps</a></li>
+                <li><a class="dropdown-item" href="switches.html">Switches</a></li>
+                <li><a class="dropdown-item" href="cases.html">Cases</a></li> 
+            </ul>
             </li>
             <li class="nav-item">
             <a class="nav-link" href="contacto.html">Contacto</a>
@@ -36,12 +44,26 @@
             <li class="nav-item">
             <a class="nav-link" href="ubicacion.html">Ubicacion</a>
             </li>
+
         </ul>
         </div>
     </div>
     </nav>
 
-    <!-- El resto del contenido de tu página de productos va aquí -->
 
+<script src="assets/js/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+document.querySelectorAll('.nav-item.dropdown').forEach(function(dropdown){
+  dropdown.addEventListener('mouseenter', function () {
+    let menu = this.querySelector('.dropdown-menu');
+    menu.classList.add('show');
+  });
+  dropdown.addEventListener('mouseleave', function () {
+    let menu = this.querySelector('.dropdown-menu');
+    menu.classList.remove('show');
+  });
+});
+</script>
 </body>
 </html>
