@@ -168,3 +168,58 @@ body {
   margin-bottom: 1.5rem;
 }
 
+/* Fade-in rápido para las imágenes del carrusel */
+.carousel-img {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.carousel-img.fade-in {
+  opacity: 1;
+}
+
+.row {
+  display: block;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem; /* Espacio entre tarjetas */
+  margin-top: 2rem;
+}
+.contenedor{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.ficha {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 2rem;
+  max-width: 350px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+.ficha img {
+  max-width: 220px;
+  width: auto;
+  height: auto;
+  margin-bottom: 1rem;
+  display: block;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.ficha h4 {
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  word-break: break-word;
+}
+.footer-label {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #222;
+}

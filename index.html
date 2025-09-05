@@ -94,6 +94,44 @@ document.querySelectorAll('.nav-item.dropdown').forEach(function(dropdown){
   });
 });
 </script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.carousel-img').forEach(function(img) {
+    img.classList.add('fade-in');
+  });
+});
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const images = document.querySelectorAll('.carousel-img');
+  let current = 0;
+
+  function showImage(index) {
+    images.forEach((img, i) => {
+      img.classList.remove('active', 'fade-in');
+      if (i === index) {
+        img.classList.add('active');
+        // Fuerza el reflow para reiniciar la animación
+        void img.offsetWidth;
+        img.classList.add('fade-in');
+      }
+    });
+  }
+
+  // Inicializa el carrusel
+  showImage(current);
+
+  document.querySelector('.carousel-btn.next').addEventListener('click', function() {
+    current = (current + 1) % images.length;
+    showImage(current);
+  });
+
+  document.querySelector('.carousel-btn.prev').addEventListener('click', function() {
+    current = (current - 1 + images.length) % images.length;
+    showImage(current);
+  });
+});
+</script>
 
 </body>
 </html>
