@@ -53,7 +53,41 @@
     <nav class="separador-navbar">
         <div class="productos">
             <H1>Keycaps ABS</H1>
-
+                <div class="contenedor"></div>
+        <div class="contenedor">
+            <div class="ficha">
+                <img src="assets/img/61qTBJD7cEL._UF1000,1000_QL80_.jpg" alt=""> 
+            <h4>KeyCaps HammerHead Shark ABS</h4>   
+            <h5>$88.000</h5>
+            <input type="button" value="Agregar" onclick="agregarProducto(1)">
+            </div>
+            <div class="ficha">
+                        <img src="assets/img/86d6480d400307382f0d4d7de8825e60.webp" alt="">
+            <h4>KeyCaps Ajjaz Pro 75% ABS</h4>
+            <h5>$55.000</h5>
+            <input type="button" value="Agregar" onclick="agregarProducto(2)">
+            </div>
+            <div class="ficha">
+                        <img src="assets/img/Cupid-red-on-white-cherry-mx-keycap-keycaps-set-pbt-thock-king-mechanical-keyboard-keyboards-3.webp" alt="">
+            <h4>KeyCaps Cupid Cherry ABS</h4>
+            <h5>$110.000</h5>
+            <input type="button" value="Agregar" onclick="agregarProducto(3)">
+            </div>
+            <div class="ficha">
+                        <img src="assets/img/descarga.webp" alt="">
+            <h4>KeyCaps Fantech Nautilus ABS</h4>
+            <h5>$65.000</h5>
+            <input type="button" value="Agregar" onclick="agregarProducto(4)">
+            </div>
+            <div class="ficha">
+                        <img src="assets/img/MD-13559_20151130234208_b87df6bcdcec9702.jpg" alt="">
+            <h4>KeyCaps Thrine Thru Emblem ABS</h4>
+            <h5>$118.000</h5>
+            <input type="button" value="Agregar" onclick="agregarProducto(5)">
+            </div>
+        </div>
+        </div>
+        
 
             <H1>Keycaps PBT</H1>
 
@@ -66,6 +100,13 @@
 
         </div>
     </nav>
+
+
+  <footer>
+    <span class="footer-label">Carrito :</span> <label id="contador" class="footer-label">0</label> <br>
+    <br> <span class="footer-label"> Total: $</span> <label id="total" class="footer-label">0</label>
+  </footer>
+
 
 
 <script src="assets/js/main.js"></script>
@@ -82,5 +123,41 @@ document.querySelectorAll('.nav-item.dropdown').forEach(function(dropdown){
   });
 });
 </script>
+<script src="assets/js/carrito.js"> </script>
+    <script>
+        var listadoProductos=[
+            new Producto(1,"KeyCaps HammerHead Shark ABS",88000),
+            new Producto(2,"KeyCaps Ajjaz Pro 75% ABS",55000),
+            new Producto(3,"KeyCaps Cupid Cherry ABS",110000),
+            new Producto(4,"KeyCaps Fantech Nautilus ABS",65000),
+            new Producto(5,"KeyCaps Thrine Thru Emblem ABS",118000),
+        ]
+        localStorage.setItem("productos",JSON.stringify(listadoProductos));
+
+        function agregarProducto(id){
+            console.log(id);
+            console.log(listadoProductos[id-1]);
+
+            var contador=parseInt(document.getElementById("contador").innerHTML);
+            contador=contador+1
+            document.getElementById("contador").innerHTML=contador;
+            var total=parseInt(document.getElementById("total").innerHTML);
+            total=total+listadoProductos[id-1]["precio"]
+            document.getElementById("total").innerHTML=total;
+            
+            var carrito=JSON.parse(localStorage.getItem("carrito"));
+            if(!carrito){
+                console.log("No hay carrito");
+                carrito=[
+                    listadoProductos[id-1]
+                ]
+                localStorage.setItem("carrito",JSON.stringify(carrito));
+            }else{
+                    console.log("Hay carrito");
+                    carrito.push(listadoProductos[id-1]);
+                    localStorage.setItem("carrito",JSON.stringify(carrito));
+                }
+        }
+    </script>
 </body>
 </html>
