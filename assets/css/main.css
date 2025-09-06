@@ -185,11 +185,14 @@ body {
   gap: 2rem; /* Espacio entre tarjetas */
   margin-top: 2rem;
 }
-.contenedor{
+.contenedor {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
+  align-items: flex-start; /* Evita que los marcos se estiren */
+  gap: 1rem;
+  height: auto; /* Elimina el 100vh */
+  margin-bottom: 2rem;
 }
 .ficha {
   background: #fff;
@@ -204,12 +207,12 @@ body {
   margin-bottom: 2rem;
 }
 .ficha img {
-  max-width: 220px;
-  width: auto;
+  max-width: 200px;
+  width: 100%;
   height: auto;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   display: block;
-  border-radius: 8px;
+  border-radius: 6px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 .ficha h4 {
@@ -222,4 +225,7 @@ body {
   font-size: 2rem;
   font-weight: bold;
   color: #222;
+}
+main {
+  margin-top: 120px; /* Ajusta según la altura real de tu navbar */
 }

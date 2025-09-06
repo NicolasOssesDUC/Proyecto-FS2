@@ -53,6 +53,39 @@
     <nav class="separador-navbar">
         <div class="productos">
             <H1>Switches Lineales</H1>
+        <div class="contenedor">
+            <div class="ficha">
+                <img src="assets/img/GAME_1989_Classic-2_720x.webp" alt=""> 
+            <h4>Switches Lin Game 1989</h4>   
+            <h5>$25.000</h5>
+            <input type="button" value="Agregar" onclick="agregarProducto(1)">
+            </div>
+            <div class="ficha">
+                        <img src="assets/img/switches_79fbaff5-ba04-4481-b8da-b30846b9ffbc_720x.webp" alt="">
+            <h4>Switches Lin Yellow</h4>
+            <h5>$18.000</h5>
+            <input type="button" value="Agregar" onclick="agregarProducto(2)">
+            </div>
+            <div class="ficha">
+                        <img src="assets/img/V3-Piano-Pro-Switch-4_720x.webp" alt="">
+            <h4>Switches Lin Piano Pro</h4>
+            <h5>$36.000</h5>
+            <input type="button" value="Agregar" onclick="agregarProducto(3)">
+            </div>
+            <div class="ficha">
+                        <img src="assets/img/Akko-Rosewood-Switch-XQ-Q-GX_720x.webp" alt="">
+            <h4>Switches Lin Akko RoseWood</h4>
+            <h5>$44.000</h5>
+            <input type="button" value="Agregar" onclick="agregarProducto(4)">
+            </div>
+            <div class="ficha">
+                        <img src="assets/img/WS_Yellow_Switch_Lifestyle_2_720x.webp" alt="">
+            <h4>Switches Lin WS Yellow</h4>
+            <h5>$53.000</h5>
+            <input type="button" value="Agregar" onclick="agregarProducto(5)">
+            </div>
+        </div>
+        </div>
 
 
             <H1>Switches Táctciles</H1>
@@ -65,6 +98,12 @@
 
         </div>
     </nav>
+
+  <footer>
+    <span class="footer-label">Carrito :</span> <label id="contador" class="footer-label">0</label> <br>
+    <br> <span class="footer-label"> Total: $</span> <label id="total" class="footer-label">0</label>
+  </footer>
+
 
 
 <script src="assets/js/main.js"></script>
@@ -81,5 +120,41 @@ document.querySelectorAll('.nav-item.dropdown').forEach(function(dropdown){
   });
 });
 </script>
+<script src="assets/js/carrito.js"> </script>
+    <script>
+        var listadoProductos=[
+            new Producto(1,"Switches Lin Game 1989",25000),
+            new Producto(2,"Switches Lin Yellow",18000),
+            new Producto(3,"Switches Lin Piano Pro",36000),
+            new Producto(4,"Switches Lin Akko RoseWood",44000),
+            new Producto(5,"Switches Lin WS Yellow",53000),
+        ]
+        localStorage.setItem("productos",JSON.stringify(listadoProductos));
+
+        function agregarProducto(id){
+            console.log(id);
+            console.log(listadoProductos[id-1]);
+
+            var contador=parseInt(document.getElementById("contador").innerHTML);
+            contador=contador+1
+            document.getElementById("contador").innerHTML=contador;
+            var total=parseInt(document.getElementById("total").innerHTML);
+            total=total+listadoProductos[id-1]["precio"]
+            document.getElementById("total").innerHTML=total;
+            
+            var carrito=JSON.parse(localStorage.getItem("carrito"));
+            if(!carrito){
+                console.log("No hay carrito");
+                carrito=[
+                    listadoProductos[id-1]
+                ]
+                localStorage.setItem("carrito",JSON.stringify(carrito));
+            }else{
+                    console.log("Hay carrito");
+                    carrito.push(listadoProductos[id-1]);
+                    localStorage.setItem("carrito",JSON.stringify(carrito));
+                }
+        }
+    </script>
 </body>
 </html>
