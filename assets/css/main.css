@@ -444,3 +444,7 @@ main {
     width: 20px;
     height: 20px;
 }
+
+.login-body main {
+    margin-top: 0;
+}
