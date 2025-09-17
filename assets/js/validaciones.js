@@ -75,3 +75,72 @@ function clearErrors() {
         }
     });
 }
+
+
+
+
+// Funcion para validar ingreso de datos del formulario de contacto 
+document.addEventListener('DOMContentLoaded', function() {
+    const contactoForm = document.getElementById('contacto-form');
+    if (contactoForm) {
+        contactoForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            if (validateContactoForm()) {
+                Swal.fire({
+                    icon: 'success',
+                    title: '¡Mensaje enviado!',
+                    text: 'Tu mensaje ha sido enviado correctamente.',
+                    confirmButtonColor: '#3085d6'
+                });
+                contactoForm.reset();
+            }
+        });
+    }
+});
+
+function validateContactoForm() {
+    let isValid = true;
+    clearContactoErrors();
+
+    const nombre = document.getElementById('nombre');
+    const correo = document.getElementById('correo');
+    const mensaje = document.getElementById('mensaje');
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!nombre.value.trim()) {
+        setContactoError(nombre,'El nombre es requerido.');
+        isValid = false;
+    }
+
+    if (!correo.value.trim() || !emailRegex.test(correo.value.trim())) {
+        setContactoError(correo,'Correo electrónico no válido.');
+        isValid = false;
+    }
+
+    if (!mensaje.value.trim() || mensaje.value.trim().length < 10) {
+        setContactoError(mensaje,'El mensaje debe tener al menos 10 caracteres.');
+        isValid = false;
+    }
+
+    return isValid;
+}
+
+function setContactoError(input, message) {
+    input.classList.add('is-invalid');
+    input.value = '';
+    input.placeholder = message;
+}
+
+function clearContactoErrors() {
+    const fields = ['nombre', 'correo', 'mensaje'];
+    fields.forEach(id => {
+        const input = document.getElementById(id);
+        if (input) {
+            input.classList.remove('is-invalid');
+            // Restaurar placeholder original si lo tienes guardado
+            if (input.dataset.originalPlaceholder) {
+                input.placeholder = input.dataset.originalPlaceholder;
+            }
+        }
+    });
+}
