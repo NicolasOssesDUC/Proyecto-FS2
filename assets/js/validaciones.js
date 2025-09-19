@@ -58,21 +58,25 @@ function validateLoginForm() {
 
 function setError(fieldId, message) {
     const input = document.getElementById(fieldId);
+    const errorSpan = document.getElementById('error-' + fieldId);
+    
     if (input) {
         input.classList.add('is-invalid');
-        input.value = ''; // Limpiar el valor incorrecto
-        input.placeholder = message; // Usar el placeholder para el error
+    }
+    if (errorSpan) {
+        errorSpan.textContent = message;
     }
 }
 
 function clearErrors() {
-    const invalidFields = document.querySelectorAll('.is-invalid');
-    invalidFields.forEach(field => {
-        field.classList.remove('is-invalid');
-        // Restaurar placeholder original
-        if (field.dataset.originalPlaceholder) {
-            field.placeholder = field.dataset.originalPlaceholder;
-        }
+    const invalidInputs = document.querySelectorAll('.is-invalid');
+    invalidInputs.forEach(input => {
+        input.classList.remove('is-invalid')
+    });
+
+    const errorSpans = document.querySelectorAll('.error-message');
+    errorSpans.forEach(span => {
+        span.textContent = '';
     });
 }
 

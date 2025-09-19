@@ -458,3 +458,11 @@ main {
 .login-body main {
     margin-top: 0;
 }
+
+.error-message {
+  color: #D32F2F;
+  font-size: 0.875rem;
+  display: block;
+  height: 1rem;
+  margin-top: 4px;
+}
