@@ -8,6 +8,25 @@ document.addEventListener('DOMContentLoaded', function() {
             input.dataset.originalPlaceholder = input.placeholder;
         });
 
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+
+        emailInput.addEventListener('blur', () => {
+            validateSingleField('email');
+        });
+        
+        passwordInput.addEventListener('blur', () => {
+            validateSingleField('password');
+        });
+
+        emailInput.addEventListener('input', () => {
+            clearFieldError('email');
+        });
+        
+        passwordInput.addEventListener('input', () => {
+            clearFieldError('password');
+        });
+
         loginForm.addEventListener('submit', function(event) {
             event.preventDefault();
             if (validateLoginForm()) {
@@ -147,4 +166,44 @@ function clearContactoErrors() {
             }
         }
     });
+}
+
+function validateSingleField(fieldId) {
+    const input = document.getElementById(fieldId);
+    const value = input.value.trim();
+
+    clearSingleError(fieldId);
+    
+    if (fieldId === 'email') {
+        const allowedDomains = ['duoc.cl', 'profesor.duoc.cl', 'gmail.com'];
+        if (value === '') {
+            setError('email', 'El correo es requerido.');
+        } else if (value.length > 100) {
+            setError('email', 'El correo no debe exceder los 100 caracteres.');
+        } else {
+            const domain = value.substring(value.lastIndexOf('@') + 1);
+            if (!allowedDomains.includes(domain.toLowerCase())) {
+                setError('email', 'Correo no válido.');
+            }
+        }
+    }
+    if (fieldId === 'password') {
+        if (value === '') {
+            setError('password', 'Contraseña requerida.');
+        } else if (value.length < 4 || value.length > 10) {
+            setError('password', 'Contraseña no válida.');
+        }
+    }
+}
+
+function clearSingleError(fieldId) {
+    const input = document.getElementById(fieldId);
+    const errorSpan = document.getElementById('error-' + fieldId);
+
+    if (input.classList.contains('is-invalid')) {
+        input.classList.remove('is-invalid');
+    }
+    if (errorSpan.textContent !== '') {
+        errorSpan.textContent = '';
+    }
 }
