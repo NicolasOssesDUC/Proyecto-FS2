@@ -455,60 +455,33 @@ main {
     height: 20px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #contador {
-  background-color: #1e1e1e;   /* Fondo negro (puedes cambiarlo) */
-  color: white;                /* Texto blanco */
-  border-radius: 6px;          /* Bordes suavemente redondeados */
-  font-size: 20px;             /* Texto más grande y legible */
-  font-weight: bold;           /* Negrita para que resalte */
-  line-height: 1.2;            /* Mejora el renderizado */
-  padding: 2px 8px;            /* Espacio interno */
-  min-width: 20px;             /* Asegura que no se achique demasiado */
-  text-align: center;          /* Centra el número */
+  background-color: #1e1e1e;
+  color: white;
+  border-radius: 6px;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1.2;
+  padding: 2px 8px;
+  min-width: 20px;
+  text-align: center;
+}
+
+.login-body main {
+  margin-top: 0;
+}
+
+.error-message {
+  color: #D32F2F;
+  font-size: 0.875rem;
+  display: block;
+  height: 1rem;
+  margin-top: 4px;
+}
+
+.form-control + .text-danger {
+  display: block;
+  min-height: 20px;
+  font-size: 0.8rem;
+  margin-top: 4px;
 }
