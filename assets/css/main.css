@@ -454,3 +454,23 @@ main {
     width: 20px;
     height: 20px;
 }
+
+.login-body main {
+    margin-top: 0;
+}
+
+.error-message {
+  color: #D32F2F;
+  font-size: 0.875rem;
+  display: block;
+  height: 1rem;
+  margin-top: 4px;
+}
+
+/* --- Mejoras para Formularios --- */
+.form-control + .text-danger {
+  display: block; /* Asegura que el span ocupe su propia línea */
+  min-height: 20px; /* Reserva el espacio para el mensaje de error */
+  font-size: 0.8rem;  /* Un tamaño de fuente un poco más pequeño para el error */
+  margin-top: 4px;
+}

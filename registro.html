@@ -1,12 +1,94 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KeyLab</title>
+    <title>Registro - KeyLab</title>
     <link rel="icon" href="assets/img/Logo2.ico">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+10&display=swap" rel="stylesheet">
 </head>
-<body>
-    
+<body class="login-body">
+
+    <div class="split-container">
+        <div class="split-left">
+            <img src="assets/img/logokb.png" alt="Logo KeyLab" class="split-logo">
+            <h1 class="welcome-message">Únete a la Comunidad</h1>
+        </div>
+        <div class="split-right">
+            <main class="login-container">
+                <div class="login-card" style="max-height: 90vh; overflow-y: auto;"> 
+                    <h2 class="text-center mb-4">Crear una Cuenta</h2>
+                    <form id="formulario-registro" novalidate>
+
+                        <div class="mb-3">
+                            <label for="run" class="form-label">RUN</label>
+                            <input type="text" id="run" name="run" class="form-control" placeholder="12345678-9" required>
+                            <span id="error-run" class="text-danger d-block mt-1"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre</label>
+                            <input type="text" id="nombre" name="nombre" class="form-control" required>
+                            <span id="error-nombre" class="text-danger d-block mt-1"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="apellidos" class="form-label">Apellidos</label>
+                            <input type="text" id="apellidos" name="apellidos" class="form-control" required>
+                            <span id="error-apellidos" class="text-danger d-block mt-1"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email-registro" class="form-label">Correo Electrónico</label>
+                            <input type="email" id="email-registro" name="email-registro" class="form-control" required>
+                            <span id="error-email-registro" class="text-danger d-block mt-1"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="password-registro" class="form-label">Contraseña</label>
+                            <input type="password" id="password-registro" name="password-registro" class="form-control" required>
+                            <span id="error-password-registro" class="text-danger d-block mt-1"></span>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="password-confirm" class="form-label">Confirmar Contraseña</label>
+                            <input type="password" id="password-confirm" name="password-confirm" class="form-control" required>
+                            <span id="error-password-confirm" class="text-danger d-block mt-1"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="region" class="form-label">Región</label>
+                            <select id="region" name="region" class="form-select" required></select>
+                            <span id="error-region" class="text-danger d-block mt-1"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="comuna" class="form-label">Comuna</label>
+                            <select id="comuna" name="comuna" class="form-select" required disabled>
+                                <option value="">Selecciona una región primero</option>
+                            </select>
+                            <span id="error-comuna" class="text-danger d-block mt-1"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="direccion" class="form-label">Dirección</label>
+                            <input type="text" id="direccion" name="direccion" class="form-control" required>
+                            <span id="error-direccion" class="text-danger d-block mt-1"></span>
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">Registrarse</button>
+                        </div>
+
+                    </form>
+                    <p class="text-center mt-3">¿Ya tienes una cuenta? <a href="login.html" class="link-accent">Inicia sesión aquí</a></p>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="assets/data/regiones-comunas.js"></script>
+    <script src="assets/js/validaciones.js"></script>
 </body>
 </html>
