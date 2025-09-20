@@ -24,7 +24,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
+            <li class="nav-item">                      
             <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
             </li>
             <li class="nav-item dropdown">
@@ -44,6 +44,15 @@
             <a class="nav-link" href="nosotros.html">Sobre Nosotros</a>
             <li class="nav-item">
             <a class="nav-link" href="ubicacion.html">Ubicacion</a>
+            </li>
+            <li class="nav-item me-3">
+              <a class="nav-link position-relative" href="carrito.html">
+                <img src="assets/img/carrito.jpg" alt="" style="width:24px;">
+                <span id="contador" 
+                      class="position-absolute top-50 start-100 translate-middle-y">
+                  0
+                </span>
+              </a>
             </li>
 
         </ul>
@@ -90,59 +99,55 @@
         
 
 
-    </main>
-<script src="assets/js/main.js"></script>
+</main>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-document.querySelectorAll('.nav-item.dropdown').forEach(function(dropdown){
-  dropdown.addEventListener('mouseenter', function () {
-    let menu = this.querySelector('.dropdown-menu');
-    menu.classList.add('show');
-  });
-  dropdown.addEventListener('mouseleave', function () {
-    let menu = this.querySelector('.dropdown-menu');
-    menu.classList.remove('show');
-  });
-});
-</script>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('.carousel-img').forEach(function(img) {
-    img.classList.add('fade-in');
-  });
-});
-</script>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const images = document.querySelectorAll('.carousel-img');
-  let current = 0;
+<script src="assets/js/carrito.js"></script>
+<script src="assets/js/main.js"></script>
 
-  function showImage(index) {
-    images.forEach((img, i) => {
-      img.classList.remove('active', 'fade-in');
-      if (i === index) {
-        img.classList.add('active');
-        // Fuerza el reflow para reiniciar la animación
-        void img.offsetWidth;
-        img.classList.add('fade-in');
-      }
+<script>
+  // Dropdown del navbar al pasar el mouse
+  document.querySelectorAll('.nav-item.dropdown').forEach(function(dropdown){
+    dropdown.addEventListener('mouseenter', function () {
+      let menu = this.querySelector('.dropdown-menu');
+      menu.classList.add('show');
     });
-  }
-
-  // Inicializa el carrusel
-  showImage(current);
-
-  document.querySelector('.carousel-btn.next').addEventListener('click', function() {
-    current = (current + 1) % images.length;
-    showImage(current);
+    dropdown.addEventListener('mouseleave', function () {
+      let menu = this.querySelector('.dropdown-menu');
+      menu.classList.remove('show');
+    });
   });
-
-  document.querySelector('.carousel-btn.prev').addEventListener('click', function() {
-    current = (current - 1 + images.length) % images.length;
-    showImage(current);
-  });
-});
 </script>
 
+<script>
+  // Inicializar carrusel con animación
+  document.addEventListener('DOMContentLoaded', function() {
+    const images = document.querySelectorAll('.carousel-img');
+    let current = 0;
+
+    function showImage(index) {
+      images.forEach((img, i) => {
+        img.classList.remove('active', 'fade-in');
+        if (i === index) {
+          img.classList.add('active');
+          void img.offsetWidth; // Reinicia animación
+          img.classList.add('fade-in');
+        }
+      });
+    }
+
+    showImage(current);
+
+    document.querySelector('.carousel-btn.next').addEventListener('click', function() {
+      current = (current + 1) % images.length;
+      showImage(current);
+    });
+
+    document.querySelector('.carousel-btn.prev').addEventListener('click', function() {
+      current = (current - 1 + images.length) % images.length;
+      showImage(current);
+    });
+  });
+</script>
 </body>
 </html>

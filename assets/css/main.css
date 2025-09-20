@@ -454,3 +454,15 @@ main {
     width: 20px;
     height: 20px;
 }
+
+#contador {
+  background-color: #1e1e1e;   /* Fondo negro (puedes cambiarlo) */
+  color: white;                /* Texto blanco */
+  border-radius: 6px;          /* Bordes suavemente redondeados */
+  font-size: 20px;             /* Texto más grande y legible */
+  font-weight: bold;           /* Negrita para que resalte */
+  line-height: 1.2;            /* Mejora el renderizado */
+  padding: 2px 8px;            /* Espacio interno */
+  min-width: 20px;             /* Asegura que no se achique demasiado */
+  text-align: center;          /* Centra el número */
+}
