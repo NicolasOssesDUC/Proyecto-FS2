@@ -1,9 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
     initLoginForm();
     initContactoForm();
+    initRegistroForm();
 });
 
-// --- VALIDACIÓN FORMULARIO LOGIN ---
+// --- FORMULARIO LOGIN ---
 
 function initLoginForm() {
     const loginForm = document.getElementById('formulario-login');
@@ -75,7 +76,7 @@ function setFieldError(fieldId, message) {
     }
 }
 
-// --- VALIDACIÓN FORMULARIO CONTACTO ---
+// --- FORMULARIO CONTACTO ---
 
 function initContactoForm() {
     const contactoForm = document.getElementById('contacto-form');
@@ -120,7 +121,6 @@ function validateContactoForm() {
 
 function setContactoError(input, message) {
     input.classList.add('is-invalid');
-    // Asumimos que no hay span de error, usamos placeholder
     input.placeholder = message;
     input.value = '';
 }
@@ -131,10 +131,50 @@ function clearContactoErrors() {
         const input = document.getElementById(id);
         if (input) {
             input.classList.remove('is-invalid');
-            // Restaurar placeholder original si lo tienes guardado
             if (input.dataset.originalPlaceholder) {
                 input.placeholder = input.dataset.originalPlaceholder;
             }
         }
     });
+}
+
+// --- FORMULARIO REGISTRO ---
+
+function initRegistroForm() {
+    const registroForm = document.getElementById('formulario-registro');
+    if (!registroForm) return;
+
+    const regionSelect = document.getElementById('region');
+    const comunaSelect = document.getElementById('comuna');
+
+    // Cargar datos de regiones y comunas desde el archivo JSON
+    fetch('assets/data/regiones-comunas.json')
+        .then(response => response.json())
+        .then(data => {
+            const regiones = data;
+
+            // Poblar el select de regiones
+            regionSelect.innerHTML = '<option value="">Seleccione una región</option>';
+            regiones.forEach(region => {
+                const option = document.createElement('option');
+                option.value = region.region;
+                option.textContent = region.region;
+                regionSelect.appendChild(option);
+            });
+
+            // Manejar cambio de región para poblar comunas
+            regionSelect.addEventListener('change', function() {
+                const selectedRegion = regiones.find(r => r.region === this.value);
+                comunaSelect.innerHTML = '<option value="">Seleccione una comuna</option>';
+                if (selectedRegion) {
+                    selectedRegion.comunas.forEach(comuna => {
+                        const option = document.createElement('option');
+                        option.value = comuna;
+                        option.textContent = comuna;
+                        comunaSelect.appendChild(option);
+                    });
+                }
+            });
+        })
+        .catch(error => console.error('Error al cargar los datos de regiones:', error));
 }
