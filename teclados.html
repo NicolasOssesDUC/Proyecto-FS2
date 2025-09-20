@@ -45,6 +45,16 @@
                     <li class="nav-item">
                         <a class="nav-link" href="ubicacion.html">Ubicacion</a>
                     </li>
+
+                    <li class="nav-item me-3">
+                        <a class="nav-link position-relative" href="carrito.html">
+                            <img src="assets/img/carrito.jpg" alt="" style="width:24px;">
+                            <span id="contador" 
+                                class="position-absolute top-50 start-100 translate-middle-y">
+                            0
+                            </span>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -64,25 +74,25 @@
                     <img src="assets/img/Fantech K613L Fighter.jpg" alt=""> 
                     <h4>Teclado Fantech K613L Figther Full Size</h4>   
                     <h5>$110.000</h5>
-                    <input type="button" value="Agregar" onclick="agregarProducto(1)">
+                    <input type="button" value="Agregar" onclick="agregarProducto(6)">
                 </div>
                 <div class="ficha">
                     <img src="assets/img/HyperX MKW100.webp" alt=""> 
                     <h4>Teclado HyperX MKW100 Full Size</h4>   
                     <h5>$135.000</h5>
-                    <input type="button" value="Agregar" onclick="agregarProducto(1)">
+                    <input type="button" value="Agregar" onclick="agregarProducto(7)">
                 </div>
                 <div class="ficha">
                     <img src="assets/img/RedDragon valhein.webp" alt=""> 
                     <h4>Teclado RedDragon Valhein</h4>   
                     <h5>$123.000</h5>
-                    <input type="button" value="Agregar" onclick="agregarProducto(1)">
+                    <input type="button" value="Agregar" onclick="agregarProducto(8)">
                 </div>
                 <div class="ficha">
                     <img src="assets/img/G413 Logitech.webp" alt=""> 
                     <h4>Teclado Logitech G413</h4>   
                     <h5>$155.000</h5>
-                    <input type="button" value="Agregar" onclick="agregarProducto(1)">
+                    <input type="button" value="Agregar" onclick="agregarProducto(9)">
                 </div>
             </div>
         </section>
@@ -124,60 +134,53 @@
         </section>
     </main>
 
-    <footer>
-        <span class="footer-label">Carrito :</span> <label id="contador" class="footer-label">0</label> <br>
-        <br> <span class="footer-label"> Total: $</span> <label id="total" class="footer-label">0</label>
-    </footer>
 
-    <script src="assets/js/main.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-    document.querySelectorAll('.nav-item.dropdown').forEach(function(dropdown){
-      dropdown.addEventListener('mouseenter', function () {
-        let menu = this.querySelector('.dropdown-menu');
-        menu.classList.add('show');
-      });
-      dropdown.addEventListener('mouseleave', function () {
-        let menu = this.querySelector('.dropdown-menu');
-        menu.classList.remove('show');
-      });
-    });
-    </script>
-    <script src="assets/js/carrito.js"> </script>
-    <script>
-        var listadoProductos=[
-            new Producto(1,"Blue Hiragana",69000),
-            new Producto(2,"Razer Black Widow 75%",89000),
-            new Producto(3,"Razer Black Widow Pro",110000),
-            new Producto(4,"Ducky On",78000),
-            new Producto(5,"Red Dragon",99000),
-        ]
-        localStorage.setItem("productos",JSON.stringify(listadoProductos));
 
-        function agregarProducto(id){
-            console.log(id);
-            console.log(listadoProductos[id-1]);
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/carrito.js"></script>
+<script src="assets/js/main.js"></script>
 
-            var contador=parseInt(document.getElementById("contador").innerHTML);
-            contador=contador+1
-            document.getElementById("contador").innerHTML=contador;
-            var total=parseInt(document.getElementById("total").innerHTML);
-            total=total+listadoProductos[id-1]["precio"]
-            document.getElementById("total").innerHTML=total;
-            
-            var carrito=JSON.parse(localStorage.getItem("carrito"));
-            if(!carrito){
-                console.log("No hay carrito");
-                carrito=[
-                    listadoProductos[id-1]
-                ]
-                localStorage.setItem("carrito",JSON.stringify(carrito));
-            }else{
-                    console.log("Hay carrito");
-                    carrito.push(listadoProductos[id-1]);
-                    localStorage.setItem("carrito",JSON.stringify(carrito));
-                }
+
+<script>
+document.querySelectorAll('.nav-item.dropdown').forEach(function(dropdown){
+  dropdown.addEventListener('mouseenter', function () {
+    let menu = this.querySelector('.dropdown-menu');
+    menu.classList.add('show');
+  });
+  dropdown.addEventListener('mouseleave', function () {
+    let menu = this.querySelector('.dropdown-menu');
+    menu.classList.remove('show');
+  });
+});
+</script>
+
+
+<script>
+    
+    var listadoProductos = [
+        new Producto(1,"Blue Hiragana",69000),
+        new Producto(2,"Razer Black Widow 75%",89000),
+        new Producto(3,"Razer Black Widow Pro",110000),
+        new Producto(4,"Ducky On",78000),
+        new Producto(5,"Red Dragon",99000),
+        new Producto(6,"Fantech K613L Figther Full Size",110000),
+        new Producto(7,"HyperX MKW100 Full Size",135000),
+        new Producto(8,"RedDragon Valhein",123000),
+        new Producto(9,"Logitech G413",155000)
+    ];
+
+    // Función para agregar producto al carrito
+    function agregarProducto(id) {
+        var carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+        var producto = listadoProductos.find(p => p.id === id);
+
+        if(producto) {
+            carrito.push(producto);
+            localStorage.setItem("carrito", JSON.stringify(carrito));
+            actualizarContador(); // Usa la función de carrito.js
         }
-    </script>
+    }
+</script>
+    
 </body>
 </html>

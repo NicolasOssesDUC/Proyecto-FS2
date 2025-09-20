@@ -455,6 +455,18 @@ main {
     height: 20px;
 }
 
+#contador {
+  background-color: #1e1e1e;
+  color: white;
+  border-radius: 6px;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1.2;
+  padding: 2px 8px;
+  min-width: 20px;
+  text-align: center;
+}
+
 .login-body main {
     margin-top: 0;
 }
@@ -466,6 +478,7 @@ main {
   height: 1rem;
   margin-top: 4px;
 }
+
 
 /* --- Mejoras para Formularios --- */
 .form-control + .text-danger {
