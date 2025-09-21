@@ -54,6 +54,32 @@
   border-radius:15px;
   margin-top: 50px;
 }
+.intro_2 {
+  height: 800px; /* Altura del banner */
+  background-image: url('../img/back.'); /* banner */
+  background-attachment: fixed; /* Efecto parallax */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color:rgb(0, 0, 0);
+  text-align: center;
+  font-size: 2rem;
+  text-shadow:
+    0 0 5px rgb(255, 255, 255),
+    0 0 10px rgb(255, 255, 255),
+    0 0 20px rgb(255, 255, 255),
+    0 0 40px rgb(255, 255, 255),
+    0 0 80px rgb(255, 255, 255);
+  /*text-shadow: 5px 5px 5px rgba(255, 255, 255, 0.75);*/
+  font-family: 'Jersey 10', monospace; 
+  font-size: 3rem;
+  border-radius:15px;
+  margin-top: 50px;
+}
 
 
 body {
@@ -61,11 +87,18 @@ body {
   font-family: 'jersey 10', monospace;
   padding: 20px;
   text-align: justify;
-  
+
+}
+
+body {
+    background-image: url('../img/back.jpg');
+    background-size: cover;         /* Ajusta la imagen para cubrir toda la pantalla */
+    background-repeat: no-repeat;   /* Evita que la imagen se repita */
+    background-position: center;    /* Centra la imagen */
 }
 .somos {
   max-width: 700px;
-  margin: 2rem auto;
+  margin: 120px auto 2rem auto; /* 120px arriba, auto a los lados, 2rem abajo */
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
@@ -74,6 +107,8 @@ body {
   line-height: 1.7;
   word-break: break-word;
   font-family: 'Jersey 10', monospace;
+  text-align: center;
+  display: block;
 }
 
 @media (max-width: 600px) {
@@ -134,11 +169,17 @@ body {
   font-family: 'Jersey 10', monospace;
   font-size: 2.5rem;
   margin-bottom: 1.5rem;
+  text-shadow:
+    0 0 5px rgb(255, 255, 255),
+    0 0 10px rgb(255, 255, 255),
+    0 0 20px rgb(255, 255, 255),
+    0 0 40px rgb(255, 255, 255),
+    0 0 80px rgb(255, 255, 255);
 }
 
 .contacto-form {
   max-width: 600px;
-  margin: 2rem auto;
+  margin: 120px auto 2rem auto; /* 120px arriba, auto a los lados, 2rem abajo */
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
@@ -169,6 +210,12 @@ body {
   font-family: 'Jersey 10', monospace;
   font-size: 4rem;
   margin-bottom: 1.5rem;
+  text-shadow:
+    0 0 5px rgb(255, 255, 255),
+    0 0 10px rgb(255, 255, 255),
+    0 0 20px rgb(255, 255, 255),
+    0 0 40px rgb(255, 255, 255),
+    0 0 80px rgb(255, 255, 255);
 }
 
 /* Fade-in rápido para las imágenes del carrusel */
@@ -196,6 +243,7 @@ body {
   gap: 1rem;
   height: auto; /* Elimina el 100vh */
   margin-bottom: 2rem;
+  
 }
 .ficha {
   background: #fff;
@@ -208,6 +256,8 @@ body {
   flex-direction: column;
   align-items: center;
   margin-bottom: 2rem;
+  
+  
 }
 .ficha img {
   max-width: 200px;
