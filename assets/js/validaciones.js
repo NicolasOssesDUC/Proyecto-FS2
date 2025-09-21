@@ -1,8 +1,28 @@
 document.addEventListener('DOMContentLoaded', function() {
+    seedAdminUser(); // Crea el admin si no existe
     initLoginForm();
     initContactoForm();
     initRegistroForm();
 });
+
+// --- INICIALIZACIÓN Y DATOS SEMILLA ---
+
+function seedAdminUser() {
+    const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+    if (usuarios.length === 0) {
+        const admin = {
+            run: '1-9',
+            nombre: 'Admin',
+            apellidos: 'KeyLab',
+            email: 'admin@keylab.cl',
+            password: 'admin',
+            rol: 'Administrador'
+        };
+        usuarios.push(admin);
+        localStorage.setItem('usuarios', JSON.stringify(usuarios));
+        console.log('Usuario administrador por defecto creado.');
+    }
+}
 
 // --- FORMULARIO LOGIN ---
 
@@ -26,7 +46,12 @@ function initLoginForm() {
 
         if (usuarioEncontrado) {
             sessionStorage.setItem('usuarioLogueado', JSON.stringify(usuarioEncontrado));
-            window.location.href = 'index.html';
+            
+            if (usuarioEncontrado.rol === 'Administrador') {
+                window.location.href = 'admin/index.html';
+            } else {
+                window.location.href = 'index.html';
+            }
         } else {
             setFieldError('email', 'Correo o contraseña incorrectos.');
             setFieldError('password', ' ');
@@ -52,7 +77,7 @@ function validateSingleField(field) {
         case 'email':
         case 'email-registro':
             const emailValue = field.value.trim();
-            const allowedDomains = ['duoc.cl', 'profesor.duoc.cl', 'gmail.com'];
+            const allowedDomains = ['duoc.cl', 'profesor.duoc.cl', 'gmail.com', 'keylab.cl']; // Añadido dominio admin
             if (emailValue === '') {
                 message = 'El correo es requerido.';
                 isValid = false;
@@ -94,7 +119,7 @@ function validateSingleField(field) {
 
         case 'run':
             const runValue = field.value.trim();
-            const runRegex = /^[0-9]{7,8}-[0-9kK]{1}$/;
+            const runRegex = /^[0-9]{1,8}-[0-9kK]{1}$/;
             if (runValue === '') {
                 message = 'El RUN es requerido.';
                 isValid = false;
@@ -195,12 +220,20 @@ function initRegistroForm() {
                 apellidos: document.getElementById('apellidos').value,
                 email: document.getElementById('email-registro').value,
                 password: document.getElementById('password-registro').value,
+                rol: 'Cliente', // Asignar rol por defecto
                 region: document.getElementById('region').value,
                 comuna: document.getElementById('comuna').value,
                 direccion: document.getElementById('direccion').value,
             };
 
             const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+            
+            const emailExistente = usuarios.find(user => user.email === nuevoUsuario.email);
+            if (emailExistente) {
+                setFieldError('email-registro', 'Este correo ya está registrado.');
+                return;
+            }
+
             usuarios.push(nuevoUsuario);
             localStorage.setItem('usuarios', JSON.stringify(usuarios));
 
@@ -227,7 +260,7 @@ function initRegistroForm() {
 
             regionSelect.addEventListener('change', function() {
                 const selectedRegion = regiones.find(r => r.region === this.value);
-                comunaSelect.innerHTML = ''; // Limpiar comunas
+                comunaSelect.innerHTML = '';
 
                 if (selectedRegion && this.value) {
                     comunaSelect.disabled = false;
