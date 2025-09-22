@@ -48,7 +48,7 @@
     0 0 20px rgb(255, 255, 255),
     0 0 40px rgb(255, 255, 255),
     0 0 80px rgb(255, 255, 255);
-  /*text-shadow: 5px 5px 5px rgba(255, 255, 255, 0.75);*/
+
   font-family: 'Jersey 10', monospace; 
   font-size: 3rem;
   border-radius:15px;
@@ -74,7 +74,7 @@
     0 0 20px rgb(255, 255, 255),
     0 0 40px rgb(255, 255, 255),
     0 0 80px rgb(255, 255, 255);
-  /*text-shadow: 5px 5px 5px rgba(255, 255, 255, 0.75);*/
+
   font-family: 'Jersey 10', monospace; 
   font-size: 3rem;
   border-radius:15px;
@@ -342,7 +342,7 @@ main {
   width: 100%;
 }
 
-/* 1. Modificamos la caja para hacer más espacio arriba */
+/* Modificamos la caja para hacer más espacio arriba */
 .login-card {
   position: relative;
   background-color: rgba(255, 255, 255, 0.5);
@@ -370,7 +370,7 @@ main {
 }
 
 
-/* 3. AÑADIMOS una regla para que el formulario esté en una capa SUPERIOR */
+/* se añade una regla para que el formulario esté en una capa SUPERIOR */
 #formulario-login {
   position: relative; /* Necesario para que z-index funcione */
   z-index: 2; /* El formulario estará en la capa 2 (por encima del logo) */
