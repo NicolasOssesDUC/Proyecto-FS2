@@ -22,3 +22,5 @@
     // Si todo está bien, el script termina y la página de admin se carga normalmente.
     console.log(`Acceso permitido: Hola, ${usuario.nombre}.`);
 })();
+
+
