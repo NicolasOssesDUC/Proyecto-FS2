@@ -1,8 +1,10 @@
+/* --- FUENTES --- */
 @import url('../fonts/satoshi_font/css/satoshi.css');
 
+/* --- NAVBAR --- */
 .navbar-brand {
   position: relative;
-  min-width: 200px; /* Ajusta según el diseño */
+  min-width: 200px; 
 }
 
 .navbar-logo {
@@ -10,13 +12,13 @@
   width: auto;
   position: absolute;
   top: 50%;
-  left: 1.5rem; /* Ajusta según el diseño */
+  left: 1.5rem; 
   transform: translateY(-50%);
 }
 
 .navbar.bg-custom {
-  background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco translúcido */
-  backdrop-filter: blur(10px); /* Desenfoque del fondo */
+  background-color: rgba(255, 255, 255, 0.8); 
+  backdrop-filter: blur(10px); 
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -28,10 +30,11 @@
   z-index: 1000;
 }
 
+/* --- PÁGINA: INDEX (BANNER) --- */
 .intro {
-  height: 800px; /* Altura del banner */
-  background-image: url('../img/keyboards.jpg'); /* banner */
-  background-attachment: fixed; /* Efecto parallax */
+  height: 800px; 
+  background-image: url('../img/keyboards.jpg'); 
+  background-attachment: fixed; 
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -48,16 +51,15 @@
     0 0 20px rgb(255, 255, 255),
     0 0 40px rgb(255, 255, 255),
     0 0 80px rgb(255, 255, 255);
-  /*text-shadow: 5px 5px 5px rgba(255, 255, 255, 0.75);*/
   font-family: 'Jersey 10', monospace; 
   font-size: 3rem;
   border-radius:15px;
   margin-top: 50px;
 }
 .intro_2 {
-  height: 800px; /* Altura del banner */
-  background-image: url('../img/back.'); /* banner */
-  background-attachment: fixed; /* Efecto parallax */
+  height: 800px; 
+  background-image: url('../img/back.'); 
+  background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -74,14 +76,13 @@
     0 0 20px rgb(255, 255, 255),
     0 0 40px rgb(255, 255, 255),
     0 0 80px rgb(255, 255, 255);
-  /*text-shadow: 5px 5px 5px rgba(255, 255, 255, 0.75);*/
   font-family: 'Jersey 10', monospace; 
   font-size: 3rem;
   border-radius:15px;
   margin-top: 50px;
 }
 
-
+/* --- ESTILOS GLOBALES --- */
 body {
   background-color: #fff;
   font-family: 'jersey 10', monospace;
@@ -92,13 +93,15 @@ body {
 
 body {
     background-image: url('../img/back.jpg');
-    background-size: cover;         /* Ajusta la imagen para cubrir toda la pantalla */
-    background-repeat: no-repeat;   /* Evita que la imagen se repita */
-    background-position: center;    /* Centra la imagen */
+    background-size: cover;         
+    background-repeat: no-repeat;   
+    background-position: center;   
 }
+
+/* --- PÁGINA: NOSOTROS --- */
 .somos {
   max-width: 700px;
-  margin: 120px auto 2rem auto; /* 120px arriba, auto a los lados, 2rem abajo */
+  margin: 120px auto 2rem auto; 
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
@@ -118,7 +121,7 @@ body {
   }
 }
 
-
+/* --- COMPONENTE: CARRUSEL (INDEX) --- */
 .carousel {
   display: flex;
   align-items: center;
@@ -163,6 +166,7 @@ body {
   background: #ccc;
 }
 
+/* --- PÁGINA: INDEX (SECCIÓN PRODUCTOS) --- */
 .productos-recientes h2 {
   margin: 70px;
   text-align: center;
@@ -177,9 +181,10 @@ body {
     0 0 80px rgb(255, 255, 255);
 }
 
+/* --- PÁGINA: CONTACTO --- */
 .contacto-form {
   max-width: 600px;
-  margin: 120px auto 2rem auto; /* 120px arriba, auto a los lados, 2rem abajo */
+  margin: 120px auto 2rem auto; 
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
@@ -188,6 +193,7 @@ body {
   font-size: 25px;
 }
 
+/* --- PÁGINA: UBICACIÓN --- */
 .Ubicacion {
   max-width: 800px;
   margin: 2rem auto;
@@ -202,9 +208,10 @@ body {
 }
 
 .separador-navbar { 
-  margin-top: 110px; /* Ajusta según la altura de la navbar */
+  margin-top: 110px; 
 }
 
+/* --- PÁGINA: PRODUCTOS --- */
 .productos h1 {
   text-align: center;
   font-family: 'Jersey 10', monospace;
@@ -218,7 +225,6 @@ body {
     0 0 80px rgb(255, 255, 255);
 }
 
-/* Fade-in rápido para las imágenes del carrusel */
 .carousel-img {
   opacity: 0;
   transition: opacity 0.5s ease;
@@ -232,16 +238,16 @@ body {
   display: block;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 2rem; /* Espacio entre tarjetas */
+  gap: 2rem; 
   margin-top: 2rem;
 }
 .contenedor {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: flex-start; /* Evita que los marcos se estiren */
+  align-items: flex-start; 
   gap: 1rem;
-  height: auto; /* Elimina el 100vh */
+  height: auto;
   margin-bottom: 2rem;
   
 }
@@ -274,6 +280,8 @@ body {
   text-align: center;
   word-break: break-word;
 }
+
+/* --- COMPONENTE: FOOTER --- */
 .footer-label {
   font-size: 2rem;
   font-weight: bold;
@@ -289,25 +297,25 @@ body {
 }
 
 main {
-  margin-top: 120px; /* Ajusta según la altura real de tu navbar */
+  margin-top: 120px; 
 }
 
-/* Estilos para la página de login */
+/* --- PÁGINAS: LOGIN & REGISTRO --- */
 .login-body {
-  background-color: #fff; /* Fondo blanco general */
+  background-color: #fff; 
   color: #111;
   height: 100vh;
   margin: 0;
   font-family: 'Jersey 10', monospace;
-  overflow: hidden; /* Para evitar barras de scroll no deseadas */
-  padding: 20px; /* <-- Margen interior */
-  box-sizing: border-box; /* <-- Ajuste de caja */
+  overflow: hidden; 
+  padding: 20px; 
+  box-sizing: border-box; 
 }
 
 .split-container {
   display: flex;
   height: 100%;
-  gap: 20px; /* Espacio entre paneles */
+  gap: 20px; 
 }
 
 .split-left {
@@ -317,12 +325,11 @@ main {
   background-position: center;
   border-radius: 20px;
   overflow: hidden;
-  /* Nuevas propiedades para centrar contenido */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1rem; /* Espacio entre logo y texto */
+  gap: 1rem; 
   text-align: center;
   padding: 2rem;
 }
@@ -342,12 +349,11 @@ main {
   width: 100%;
 }
 
-/* 1. Modificamos la caja para hacer más espacio arriba */
 .login-card {
   position: relative;
   background-color: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(10px);
-  padding: 2rem; /* Restauramos el padding original */
+  padding: 2rem; 
   border-radius: 15px;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   width: 100%;
@@ -355,13 +361,11 @@ main {
   text-align: center;
 }
 
-/* Estilo para el nuevo logo en el panel izquierdo */
 .split-logo {
     width: 250px;
-    filter: brightness(0) invert(1); /* Invierte el color a blanco */
+    filter: brightness(0) invert(1); 
 }
 
-/* Estilo para el mensaje de bienvenida */
 .welcome-message {
     color: white;
     font-family: 'Satoshi-Bold', sans-serif;
@@ -369,11 +373,9 @@ main {
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
-
-/* 3. AÑADIMOS una regla para que el formulario esté en una capa SUPERIOR */
 #formulario-login {
-  position: relative; /* Necesario para que z-index funcione */
-  z-index: 2; /* El formulario estará en la capa 2 (por encima del logo) */
+  position: relative; 
+  z-index: 2; 
 }
 
 .login-card h2 {
@@ -393,17 +395,17 @@ main {
   top: 50%;
   left: 15px;
   transform: translateY(-50%);
-  color: #888; /* Color del icono */
+  color: #888; 
 }
 
 #formulario-login input {
   width: 100%;
-  padding: 1rem 1rem 1rem 45px; /* Padding: Arriba, Derecha, Abajo, Izquierda (para el icono) */
+  padding: 1rem 1rem 1rem 45px; 
   border: 1px solid #ccc;
-  border-radius: 12px; /* Bordes más redondeados */
+  border-radius: 12px; 
   box-sizing: border-box;
-  font-size: 1.1rem; /* Fuente un poco más grande */
-  font-family: 'Satoshi-Regular', sans-serif; /* Usamos la nueva fuente */
+  font-size: 1.1rem; 
+  font-family: 'Satoshi-Regular', sans-serif; 
 }
 
 #formulario-login .btn-primary {
@@ -421,7 +423,7 @@ main {
 }
 
 #formulario-login .btn-primary:hover {
-  background-color: #333; /* Un poco más claro en hover */
+  background-color: #333; 
 }
 
 .login-links {
@@ -442,18 +444,16 @@ main {
   margin-top: 1rem;
 }
 
-/* Estilo para enlaces acentuados */
 .link-accent {
-    color: #FF8C00; /* Naranja */
+    color: #FF8C00; 
     font-weight: bold;
 }
 
 .link-accent:hover {
-    color: #E67E00; /* Naranja un poco más oscuro */
-    text-decoration: none; /* Quitar el subrayado al pasar el cursor */
+    color: #E67E00; 
+    text-decoration: none; 
 }
 
-/* Estilo para el separador "o" */
 .separator {
     display: flex;
     align-items: center;
@@ -478,7 +478,6 @@ main {
     margin-left: .5em;
 }
 
-/* Estilo para el botón de Google */
 .btn-google {
     width: 100%;
     padding: 1rem;
@@ -486,14 +485,14 @@ main {
     border-radius: 50px;
     background-color: #fff;
     color: #333;
-    font-size: 1.1rem; /* Un poco más pequeño que el principal */
+    font-size: 1.1rem; 
     font-family: 'Satoshi-Bold', sans-serif;
     cursor: pointer;
     transition: background-color 0.3s;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.75rem; /* Espacio entre el logo y el texto */
+    gap: 0.75rem; 
 }
 
 .btn-google:hover {
@@ -521,6 +520,7 @@ main {
     margin-top: 0;
 }
 
+/* --- FORMULARIOS (GENERAL) --- */
 .error-message {
   color: #D32F2F;
   font-size: 0.875rem;
@@ -529,11 +529,9 @@ main {
   margin-top: 4px;
 }
 
-
-/* --- Mejoras para Formularios --- */
 .form-control + .text-danger {
-  display: block; /* Asegura que el span ocupe su propia línea */
-  min-height: 20px; /* Reserva el espacio para el mensaje de error */
-  font-size: 0.8rem;  /* Un tamaño de fuente un poco más pequeño para el error */
+  display: block; 
+  min-height: 20px; 
+  font-size: 0.8rem;  
   margin-top: 4px;
 }

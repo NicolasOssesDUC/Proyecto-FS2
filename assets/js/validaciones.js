@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initLoginForm();
     initContactoForm();
     initRegistroForm();
-    initNuevoUsuarioForm(); // <--- LLAMADA A LA NUEVA FUNCIÓN
+    initNuevoUsuarioForm(); 
 });
 
 // --- INICIALIZACIÓN Y DATOS SEMILLA ---
@@ -25,7 +25,6 @@ function seedAdminUser() {
 }
 
 // --- FORMULARIO LOGIN ---
-// ... (código existente sin cambios)
 function initLoginForm() {
     const loginForm = document.getElementById('formulario-login');
     if (!loginForm) return;
@@ -67,7 +66,6 @@ function validateLoginForm() {
 
 
 // --- VALIDACIÓN DE CAMPOS (GENERAL) ---
-// ... (código existente sin cambios)
 function validateSingleField(field) {
     if (!field || !field.id) return true;
 
@@ -146,7 +144,6 @@ function setFieldError(fieldId, message) {
 
 
 // --- FORMULARIO CONTACTO ---
-// ... (código existente sin cambios)
 function initContactoForm() {
     const contactoForm = document.getElementById('contacto-form');
     if (!contactoForm) return;
@@ -205,7 +202,6 @@ function clearContactoErrors() {
 
 
 // --- FORMULARIO REGISTRO PÚBLICO ---
-// ... (código existente sin cambios)
 function initRegistroForm() {
     const registroForm = document.getElementById('formulario-registro');
     if (!registroForm) return;
@@ -249,7 +245,7 @@ function initRegistroForm() {
     const regionSelect = document.getElementById('region');
     const comunaSelect = document.getElementById('comuna');
 
-    fetch('../assets/data/regiones-comunas.json') // Corregido path para admin
+    fetch('../assets/data/regiones-comunas.json') 
         .then(response => response.json())
         .then(data => {
             const regiones = data;
