@@ -1,13 +1,149 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KeyLab-Admin</title>
-    <link rel="icon" href="assets/img/Logo2.ico">
-    <link rel="stylesheet" href="assets/css/main.css">
+    <title>Editar Usuario - Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/admin.css">
 </head>
 <body>
-    
+
+    <header class="bg-dark text-white p-3 d-flex justify-content-between align-items-center">
+        <h4>Panel de Administración</h4>
+        <button id="logout-btn" class="btn btn-danger">Cerrar Sesión</button>
+    </header>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Barra Lateral -->
+            <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                <div class="position-sticky pt-3">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="productos.html">Gestión de Productos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="usuarios.html">Gestión de Usuarios</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Contenido Principal -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Editar Usuario</h1>
+                </div>
+
+                <form id="form-editar-usuario" novalidate>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="run" class="form-label">RUN</label>
+                            <input type="text" id="run" class="form-control" required>
+                            <span id="error-run" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="nombre" class="form-label">Nombre</label>
+                            <input type="text" id="nombre" class="form-control" required>
+                            <span id="error-nombre" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="apellidos" class="form-label">Apellidos</label>
+                            <input type="text" id="apellidos" class="form-control" required>
+                            <span id="error-apellidos" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="email-registro" class="form-label">Correo Electrónico (no se puede cambiar)</label>
+                            <input type="email" id="email-registro" class="form-control" required disabled>
+                            <span id="error-email-registro" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="rol" class="form-label">Rol de Usuario</label>
+                            <select id="rol" class="form-select" required>
+                                <option value="">Seleccione un rol</option>
+                                <option value="Administrador">Administrador</option>
+                                <option value="Vendedor">Vendedor</option>
+                                <option value="Cliente">Cliente</option>
+                            </select>
+                            <span id="error-rol" class="text-danger"></span>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                    <a href="usuarios.html" class="btn btn-secondary">Cancelar</a>
+                </form>
+
+            </main>
+        </div>
+    </div>
+
+    <script src="../assets/js/admin.js"></script>
+    <script src="../assets/js/validaciones.js"></script>
+    <script>
+        document.getElementById('logout-btn').addEventListener('click', function() {
+            sessionStorage.removeItem('usuarioLogueado');
+            window.location.href = '../login.html';
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // 1. Leer el email de la URL
+            const params = new URLSearchParams(window.location.search);
+            const userEmail = params.get('email');
+
+            if (!userEmail) {
+                alert('No se ha especificado un usuario para editar.');
+                window.location.href = 'usuarios.html';
+                return;
+            }
+
+            // 2. Cargar los datos del usuario y rellenar el formulario
+            const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+            const usuarioAEditar = usuarios.find(user => user.email === userEmail);
+
+            if (!usuarioAEditar) {
+                alert('Usuario no encontrado.');
+                window.location.href = 'usuarios.html';
+                return;
+            }
+
+            // 3. Rellenar el formulario
+            document.getElementById('run').value = usuarioAEditar.run || '';
+            document.getElementById('nombre').value = usuarioAEditar.nombre || '';
+            document.getElementById('apellidos').value = usuarioAEditar.apellidos || '';
+            document.getElementById('email-registro').value = usuarioAEditar.email || '';
+            document.getElementById('rol').value = usuarioAEditar.rol || '';
+
+            // 4. Lógica para guardar los cambios (Paso 3 del plan)
+            const form = document.getElementById('form-editar-usuario');
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                
+                // Aquí iría la validación de los campos, pero por simplicidad la omitimos por ahora
+
+                // Encontrar el índice del usuario en el arreglo
+                const userIndex = usuarios.findIndex(user => user.email === userEmail);
+
+                // Actualizar los datos
+                usuarios[userIndex].run = document.getElementById('run').value;
+                usuarios[userIndex].nombre = document.getElementById('nombre').value;
+                usuarios[userIndex].apellidos = document.getElementById('apellidos').value;
+                usuarios[userIndex].rol = document.getElementById('rol').value;
+
+                // Guardar el arreglo actualizado en localStorage
+                localStorage.setItem('usuarios', JSON.stringify(usuarios));
+
+                alert('Usuario actualizado correctamente.');
+                window.location.href = 'usuarios.html';
+            });
+        });
+    </script>
 </body>
 </html>

@@ -1,11 +1,31 @@
 document.addEventListener('DOMContentLoaded', function() {
+    seedAdminUser();
     initLoginForm();
     initContactoForm();
     initRegistroForm();
+    initNuevoUsuarioForm(); // <--- LLAMADA A LA NUEVA FUNCIÓN
 });
 
-// --- FORMULARIO LOGIN ---
+// --- INICIALIZACIÓN Y DATOS SEMILLA ---
 
+function seedAdminUser() {
+    const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+    if (usuarios.length === 0) {
+        const admin = {
+            run: '1-9',
+            nombre: 'Admin',
+            apellidos: 'KeyLab',
+            email: 'admin@keylab.cl',
+            password: 'admin',
+            rol: 'Administrador'
+        };
+        usuarios.push(admin);
+        localStorage.setItem('usuarios', JSON.stringify(usuarios));
+    }
+}
+
+// --- FORMULARIO LOGIN ---
+// ... (código existente sin cambios)
 function initLoginForm() {
     const loginForm = document.getElementById('formulario-login');
     if (!loginForm) return;
@@ -26,7 +46,12 @@ function initLoginForm() {
 
         if (usuarioEncontrado) {
             sessionStorage.setItem('usuarioLogueado', JSON.stringify(usuarioEncontrado));
-            window.location.href = 'index.html';
+            
+            if (usuarioEncontrado.rol === 'Administrador') {
+                window.location.href = 'admin/index.html';
+            } else {
+                window.location.href = 'index.html';
+            }
         } else {
             setFieldError('email', 'Correo o contraseña incorrectos.');
             setFieldError('password', ' ');
@@ -40,8 +65,9 @@ function validateLoginForm() {
     return isEmailValid && isPasswordValid;
 }
 
-// --- VALIDACIÓN DE CAMPOS (GENERAL) ---
 
+// --- VALIDACIÓN DE CAMPOS (GENERAL) ---
+// ... (código existente sin cambios)
 function validateSingleField(field) {
     if (!field || !field.id) return true;
 
@@ -52,7 +78,7 @@ function validateSingleField(field) {
         case 'email':
         case 'email-registro':
             const emailValue = field.value.trim();
-            const allowedDomains = ['duoc.cl', 'profesor.duoc.cl', 'gmail.com'];
+            const allowedDomains = ['duoc.cl', 'profesor.duoc.cl', 'gmail.com', 'keylab.cl'];
             if (emailValue === '') {
                 message = 'El correo es requerido.';
                 isValid = false;
@@ -94,7 +120,7 @@ function validateSingleField(field) {
 
         case 'run':
             const runValue = field.value.trim();
-            const runRegex = /^[0-9]{7,8}-[0-9kK]{1}$/;
+            const runRegex = /^[0-9]{1,8}-[0-9kK]{1}$/;
             if (runValue === '') {
                 message = 'El RUN es requerido.';
                 isValid = false;
@@ -118,8 +144,9 @@ function setFieldError(fieldId, message) {
     }
 }
 
-// --- FORMULARIO CONTACTO ---
 
+// --- FORMULARIO CONTACTO ---
+// ... (código existente sin cambios)
 function initContactoForm() {
     const contactoForm = document.getElementById('contacto-form');
     if (!contactoForm) return;
@@ -176,8 +203,9 @@ function clearContactoErrors() {
     });
 }
 
-// --- FORMULARIO REGISTRO ---
 
+// --- FORMULARIO REGISTRO PÚBLICO ---
+// ... (código existente sin cambios)
 function initRegistroForm() {
     const registroForm = document.getElementById('formulario-registro');
     if (!registroForm) return;
@@ -195,12 +223,20 @@ function initRegistroForm() {
                 apellidos: document.getElementById('apellidos').value,
                 email: document.getElementById('email-registro').value,
                 password: document.getElementById('password-registro').value,
+                rol: 'Cliente', // Asignar rol por defecto
                 region: document.getElementById('region').value,
                 comuna: document.getElementById('comuna').value,
                 direccion: document.getElementById('direccion').value,
             };
 
             const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+            
+            const emailExistente = usuarios.find(user => user.email === nuevoUsuario.email);
+            if (emailExistente) {
+                setFieldError('email-registro', 'Este correo ya está registrado.');
+                return;
+            }
+
             usuarios.push(nuevoUsuario);
             localStorage.setItem('usuarios', JSON.stringify(usuarios));
 
@@ -213,7 +249,7 @@ function initRegistroForm() {
     const regionSelect = document.getElementById('region');
     const comunaSelect = document.getElementById('comuna');
 
-    fetch('assets/data/regiones-comunas.json')
+    fetch('../assets/data/regiones-comunas.json') // Corregido path para admin
         .then(response => response.json())
         .then(data => {
             const regiones = data;
@@ -227,7 +263,7 @@ function initRegistroForm() {
 
             regionSelect.addEventListener('change', function() {
                 const selectedRegion = regiones.find(r => r.region === this.value);
-                comunaSelect.innerHTML = ''; // Limpiar comunas
+                comunaSelect.innerHTML = '';
 
                 if (selectedRegion && this.value) {
                     comunaSelect.disabled = false;
@@ -256,5 +292,56 @@ function validateRegistroForm() {
     isValid = validateSingleField(document.getElementById('password-registro')) && isValid;
     isValid = validateSingleField(document.getElementById('password-confirm')) && isValid;
     isValid = validateSingleField(document.getElementById('direccion')) && isValid;
+    return isValid;
+}
+
+
+// --- FORMULARIO NUEVO USUARIO (ADMIN) ---
+
+function initNuevoUsuarioForm() {
+    const form = document.getElementById('form-nuevo-usuario');
+    if (!form) return;
+
+    form.addEventListener('input', (event) => {
+        validateSingleField(event.target);
+    });
+
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        if (validateNuevoUsuarioForm()) {
+            const nuevoUsuario = {
+                run: document.getElementById('run').value,
+                nombre: document.getElementById('nombre').value,
+                apellidos: document.getElementById('apellidos').value,
+                email: document.getElementById('email-registro').value,
+                password: document.getElementById('password-registro').value,
+                rol: document.getElementById('rol').value
+            };
+
+            const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+            const emailExistente = usuarios.find(user => user.email === nuevoUsuario.email);
+
+            if (emailExistente) {
+                setFieldError('email-registro', 'Este correo ya está registrado.');
+                return;
+            }
+
+            usuarios.push(nuevoUsuario);
+            localStorage.setItem('usuarios', JSON.stringify(usuarios));
+
+            alert('Usuario creado exitosamente.');
+            window.location.href = 'usuarios.html'; // Redirigir a la lista de usuarios
+        }
+    });
+}
+
+function validateNuevoUsuarioForm() {
+    let isValid = true;
+    isValid = validateSingleField(document.getElementById('run')) && isValid;
+    isValid = validateSingleField(document.getElementById('nombre')) && isValid;
+    isValid = validateSingleField(document.getElementById('apellidos')) && isValid;
+    isValid = validateSingleField(document.getElementById('email-registro')) && isValid;
+    isValid = validateSingleField(document.getElementById('password-registro')) && isValid;
+    isValid = validateSingleField(document.getElementById('rol')) && isValid; // Validar que se haya seleccionado un rol
     return isValid;
 }
