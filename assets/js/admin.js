@@ -15,7 +15,6 @@
     // 3. Comprobar si el rol es 'Administrador'
     if (usuario.rol !== 'Administrador') {
         console.log(`Acceso denegado: El usuario ${usuario.nombre} no tiene rol de Administrador.`);
-        // Si no es admin, lo enviamos a la página principal de la tienda.
         window.location.href = '../index.html';
     }
 
