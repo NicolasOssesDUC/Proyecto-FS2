@@ -100,22 +100,16 @@
         <H1>Switches Clicky</H1>
         <div class="contenedor">
             <div class="ficha">
-                <img >
-                <h4> </h4>
-                <h5> </h5>
-                <input type="button" value="Agregar" onclick="agregarProducto(x)">
+                <img src="assets/img/gateron-blue.jpg">
+                <h4>Switch Gateron Blue 90u</h4>
+                <h5>$24.990</h5>
+                <input type="button" value="Agregar" onclick="agregarProducto(6)">
             </div>
             <div class="ficha">
-                <img >
-                <h4> </h4>
-                <h5> </h5>
-                <input type="button" value="Agregar" onclick="agregarProducto(x)">
-            </div>
-            <div class="ficha">
-                <img >
-                <h4> </h4>
-                <h5> </h5>
-                <input type="button" value="Agregar" onclick="agregarProducto(x)">
+                <img src="assets/img/KTT PURPLE.webp">
+                <h4>Switch KTT Purple 90u</h4>
+                <h5>$22.990</h5>
+                <input type="button" value="Agregar" onclick="agregarProducto(7)">
             </div>
         </div>
     </section>
@@ -124,22 +118,16 @@
         <H1>Switches tactiles</H1>
         <div class="contenedor">
             <div class="ficha">
-                <img >
-                <h4> </h4>
-                <h5> </h5>
-                <input type="button" value="Agregar" onclick="agregarProducto(x)">
+                <img src="assets/img/GATERONBROWN.jpg">
+                <h4>Switch Gateron Brown 90u</h4>
+                <h5>$20.000</h5>
+                <input type="button" value="Agregar" onclick="agregarProducto(8)">
             </div>
             <div class="ficha">
-                <img >
-                <h4> </h4>
-                <h5> </h5>
-                <input type="button" value="Agregar" onclick="agregarProducto(x)">
-            </div>
-            <div class="ficha">
-                <img >
-                <h4> </h4>
-                <h5> </h5>
-                <input type="button" value="Agregar" onclick="agregarProducto(x)">
+                <img src="assets/img/GATERONRED.webp">
+                <h4>Switch Gateron Red 90u</h4>
+                <h5>$17.990</h5>
+                <input type="button" value="Agregar" onclick="agregarProducto(9)">
             </div>
         </div>
     </section>
@@ -169,33 +157,30 @@ document.querySelectorAll('.nav-item.dropdown').forEach(function(dropdown){
             new Producto(3,"Switches Lin Piano Pro",36000),
             new Producto(4,"Switches Lin Akko RoseWood",44000),
             new Producto(5,"Switches Lin WS Yellow",53000),
+            new Producto(6,"Switch Gateron Blue 90u",24990),
+            new Producto(7,"Switch KTT Purple 90u",22990),
+            new Producto(8,"Switch Gateron Brown 90u",20000),
+            new Producto(9,"Switch Gateron Red 90u",17990)
         ]
-        localStorage.setItem("productos",JSON.stringify(listadoProductos));
+        function agregarProducto(id) {
+        var carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+        var producto = listadoProductos.find(p => p.id === id);
 
-        function agregarProducto(id){
-            console.log(id);
-            console.log(listadoProductos[id-1]);
-
-            var contador=parseInt(document.getElementById("contador").innerHTML);
-            contador=contador+1
-            document.getElementById("contador").innerHTML=contador;
-            var total=parseInt(document.getElementById("total").innerHTML);
-            total=total+listadoProductos[id-1]["precio"]
-            document.getElementById("total").innerHTML=total;
-            
-            var carrito=JSON.parse(localStorage.getItem("carrito"));
-            if(!carrito){
-                console.log("No hay carrito");
-                carrito=[
-                    listadoProductos[id-1]
-                ]
-                localStorage.setItem("carrito",JSON.stringify(carrito));
-            }else{
-                    console.log("Hay carrito");
-                    carrito.push(listadoProductos[id-1]);
-                    localStorage.setItem("carrito",JSON.stringify(carrito));
-                }
+        if(producto) {
+            carrito.push(producto);
+            localStorage.setItem("carrito", JSON.stringify(carrito));
+            actualizarContador(); // Usa la función de carrito.js
         }
+    }function agregarProducto(id) {
+        var carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+        var producto = listadoProductos.find(p => p.id === id);
+
+        if(producto) {
+            carrito.push(producto);
+            localStorage.setItem("carrito", JSON.stringify(carrito));
+            actualizarContador(); // Usa la función de carrito.js
+        }
+    }
     </script>
 </body>
 </html>
