@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
-    <!-- Navbar igual al index -->
+    <!-- Bonito Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         <a class="navbar-brand" href="index.html">
@@ -98,7 +98,7 @@
     <script src="assets/js/carrito.js"></script>
     <script src="assets/js/main.js"></script>
     <script>
-      // Dropdown del navbar al pasar el mouse
+      // Aqui permite bajar el navbar con el mouse
       document.querySelectorAll('.nav-item.dropdown').forEach(function(dropdown){
         dropdown.addEventListener('mouseenter', function () {
           let menu = this.querySelector('.dropdown-menu');
@@ -111,7 +111,7 @@
       });
     </script>
     <script>
-    // Ejemplo de renderizado del carrito (debes adaptar a tu lógica)
+    // Ejemplo de renderizado del carrito
     document.addEventListener('DOMContentLoaded', function() {
         const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
         const lista = document.getElementById('carrito-lista');

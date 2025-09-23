@@ -16,7 +16,7 @@
 
     <div class="container-fluid">
         <div class="row">
-            <!-- Barra Lateral -->
+            <!-- Tu marido navbar -->
             <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
                 <div class="position-sticky pt-3">
                     <ul class="nav flex-column">
@@ -52,7 +52,7 @@
                             </tr>
                         </thead>
                         <tbody id="tabla-usuarios">
-                            <!-- Las filas de usuarios se insertarán aquí con JavaScript -->
+                            <!-- Las filas de usuarios se insertarán con JavaScript -->
                         </tbody>
                     </table>
                 </div>
@@ -94,7 +94,7 @@
                     button.addEventListener('click', eliminarUsuario);
                 });
 
-                // AÑADIDO: Listener para botones de editar
+                // Listener para botones de editar
                 document.querySelectorAll('.btn-editar').forEach(button => {
                     button.addEventListener('click', editarUsuario);
                 });
@@ -109,10 +109,10 @@
                 }
             }
 
-            // AÑADIDO: Función para manejar la edición
+            // Función para manejar la edición
             function editarUsuario(event) {
                 const userEmail = event.target.getAttribute('data-email');
-                // Redirigir a la página de edición pasando el email como parámetro
+                // Te redirije a la página de edición pasando el email como parámetro
                 window.location.href = `usuario-editar.html?email=${userEmail}`;
             }
 

@@ -16,7 +16,7 @@
 
     <div class="container-fluid">
         <div class="row">
-            <!-- Barra Lateral -->
+            <!-- Tu otro marido navbar -->
             <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
                 <div class="position-sticky pt-3">
                     <ul class="nav flex-column">
@@ -94,7 +94,7 @@
         });
 
         document.addEventListener('DOMContentLoaded', function() {
-            // 1. Leer el email de la URL
+            // 1. Este lee el email
             const params = new URLSearchParams(window.location.search);
             const userEmail = params.get('email');
 
@@ -121,14 +121,14 @@
             document.getElementById('email-registro').value = usuarioAEditar.email || '';
             document.getElementById('rol').value = usuarioAEditar.rol || '';
 
-            // 4. Lógica para guardar los cambios (Paso 3 del plan)
+            // 4. Lógica para guardar los cambios
             const form = document.getElementById('form-editar-usuario');
             form.addEventListener('submit', function(event) {
                 event.preventDefault();
                 
-                // Aquí iría la validación de los campos, pero por simplicidad la omitimos por ahora
+                // Aquí iría la validación de los campos, pero no esta asi que otro dia la agregaremos
 
-                // Encontrar el índice del usuario en el arreglo
+                // aqui encuentra el índice del usuario en el arreglo
                 const userIndex = usuarios.findIndex(user => user.email === userEmail);
 
                 // Actualizar los datos
@@ -137,7 +137,7 @@
                 usuarios[userIndex].apellidos = document.getElementById('apellidos').value;
                 usuarios[userIndex].rol = document.getElementById('rol').value;
 
-                // Guardar el arreglo actualizado en localStorage
+                // Guarda el arreglo actualizado en localStorage
                 localStorage.setItem('usuarios', JSON.stringify(usuarios));
 
                 alert('Usuario actualizado correctamente.');
