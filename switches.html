@@ -45,7 +45,8 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const container = document.getElementById('productos-container');
-            const items = productos.filter(p => p.categoria === 'Switches');
+            const productosParaMostrar = JSON.parse(localStorage.getItem('productos')) || productos;
+            const items = productosParaMostrar.filter(p => p.categoria === 'Switches');
             if (items.length === 0) {
                 container.innerHTML = '<p>No hay switches disponibles.</p>';
                 return;

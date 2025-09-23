@@ -52,25 +52,24 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/admin.js"></script>
-    <script src="../assets/data/productos.js"></script>
+    <script src="../assets/data/productos.js"></script> <!-- Se mantiene para la función seed -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // --- CERRAR SESIÓN ---
             document.getElementById('logout-btn').addEventListener('click', function() {
                 sessionStorage.removeItem('usuarioLogueado');
                 window.location.href = '../login.html';
             });
 
-            // Sincronizar y renderizar
-            syncProductos();
+            // --- LÓGICA DE PRODUCTOS ---
+            seedProductos();
             renderizarTablaProductos();
         });
 
-        function syncProductos() {
-            // Siempre toma los datos de productos.js como la fuente maestra y los pone en localStorage
-            // Nota: Esto sobreescribirá los productos añadidos en la sesión actual si se recarga.
-            if (typeof productos !== 'undefined') {
+        // --- FUNCIONES DE DATOS ---
+        function seedProductos() {
+            if (!localStorage.getItem('productos')) {
                 localStorage.setItem('productos', JSON.stringify(productos));
-                console.log('Productos sincronizados desde productos.js a localStorage.');
             }
         }
 
@@ -82,6 +81,7 @@
             localStorage.setItem('productos', JSON.stringify(listaProductos));
         }
 
+        // --- RENDERIZADO Y ACCIONES ---
         function renderizarTablaProductos() {
             const listaProductos = obtenerProductos();
             const tbody = document.querySelector('#tabla-productos tbody');
@@ -110,7 +110,6 @@
                 listaProductos = listaProductos.filter(p => p.id !== id);
                 guardarProductos(listaProductos);
                 renderizarTablaProductos();
-                alert('Producto eliminado.');
             }
         }
     </script>

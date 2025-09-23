@@ -11,52 +11,98 @@
 </head>
 <body>
 
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-custom">
-        <!-- Navbar Completa -->
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <img src="assets/img/logokb.png" alt="logo " class="navbar-logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="productos.html" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Productos</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="teclados.html">Teclados</a></li>
+                            <li><a class="dropdown-item" href="keycaps.html">Key Caps</a></li>
+                            <li><a class="dropdown-item" href="switches.html">Switches</a></li>
+                            <li><a class="dropdown-item" href="cases.html">Cases</a></li> 
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contacto.html">Contacto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="nosotros.html">Sobre Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="ubicacion.html">Ubicacion</a>
+                    </li>
+                    <li class="nav-item me-3">
+                        <a class="nav-link position-relative" href="carrito.html">
+                            <img src="assets/img/carrito.jpg" alt="" style="width:24px;">
+                            <span id="contador" class="position-absolute top-50 start-100 translate-middle-y">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </nav>
 
     <main>
         <section class="productos">
             <h1>Teclados</h1>
+            <!-- El contenedor se llenará dinámicamente -->
             <div id="productos-container" class="contenedor"></div>
         </section>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/data/productos.js"></script> <!-- Cargar datos para el carrito -->
+    <script src="assets/data/productos.js"></script> <!-- Carga la fuente de datos -->
     <script src="assets/js/carrito.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const container = document.getElementById('productos-container');
             
-            // Lógica de Sincronización: Usa localStorage si existe, si no, usa el archivo .js
-            let productosParaMostrar = JSON.parse(localStorage.getItem('productos')) || productos;
             
-            const teclados = productosParaMostrar.filter(p => p.categoria === 'Teclados');
+            const teclados = productos.filter(p => p.categoria === 'Teclados');
 
             if (teclados.length === 0) {
                 container.innerHTML = '<p>No hay teclados disponibles en este momento.</p>';
                 return;
             }
 
+            
             teclados.forEach(teclado => {
-                const ficha = document.createElement('div');
-                ficha.className = 'ficha';
-                ficha.innerHTML = `
-                    <a href="detalle-producto.html?id=${teclado.id}">
-                        <img src="${teclado.imagen}" alt="${teclado.nombre}">
+                const ficha = `
+                    <a href="detalle-producto.html?id=${teclado.id}" class="ficha-link">
+                        <div class="ficha">
+                            <img src="${teclado.imagen}" alt="${teclado.nombre}">
+                            <h4>${teclado.nombre}</h4>
+                            <h5>$${teclado.precio.toLocaleString('es-CL')}</h5>
+                            <button class="btn btn-primary w-100">Ver Detalle</button>
+                        </div>
                     </a>
-                    <h4>${teclado.nombre}</h4>
-                    <h5>$${teclado.precio.toLocaleString('es-CL')}</h5>
-                    <button class="btn btn-primary w-100">Añadir al Carrito</button>
                 `;
-                
-                const boton = ficha.querySelector('button');
-                boton.addEventListener('click', () => {
-                    window.agregarAlCarrito(teclado.id);
-                });
+                container.innerHTML += ficha;
+            });
+        });
 
-                container.appendChild(ficha);
+        // Script hover dropdown 
+        document.querySelectorAll('.nav-item.dropdown').forEach(function(dropdown){
+            dropdown.addEventListener('mouseenter', function () {
+                let menu = this.querySelector('.dropdown-menu');
+                menu.classList.add('show');
+            });
+            dropdown.addEventListener('mouseleave', function () {
+                let menu = this.querySelector('.dropdown-menu');
+                menu.classList.remove('show');
             });
         });
     </script>
