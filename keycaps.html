@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KeyLab</title>
+    <title>Keycaps - KeyLab</title>
     <link rel="icon" href="assets/img/Logo2.ico">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/main.css">
@@ -11,130 +11,85 @@
 </head>
 <body>
 
-    <!-- Bonito Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="index.html">
-            <img src="assets/img/logokb.png" alt="logo " class="navbar-logo">
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
-            </li>
-            <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="productos.html" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Productos  
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-custom">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <img src="assets/img/logokb.png" alt="logo " class="navbar-logo">
             </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="teclados.html">Teclados</a></li>
-                <li><a class="dropdown-item" href="keycaps.html">Key Caps</a></li>
-                <li><a class="dropdown-item" href="switches.html">Switches</a></li>
-                <li><a class="dropdown-item" href="cases.html">Cases</a></li> 
-            </ul>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="contacto.html">Contacto</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="nosotros.html">Sobre Nosotros</a>
-            <li class="nav-item">
-            <a class="nav-link" href="ubicacion.html">Ubicacion</a>
-            </li>
-
-            <li class="nav-item me-3">
-              <a class="nav-link position-relative" href="carrito.html">
-                <img src="assets/img/carrito.jpg" alt="" style="width:24px;">
-                <span id="contador" 
-                      class="position-absolute top-50 start-100 translate-middle-y">
-                  
-                </span>
-              </a>
-            </li>
-
-        </ul>
-        </div>
-    </div>
-    </nav>
-
-    <nav class="separador-navbar">
-        <div class="productos">
-            <H1>Keycaps ABS</H1>
-                <div class="contenedor"></div>
-        <div class="contenedor">
-            <div class="ficha">
-                <img src="assets/img/61qTBJD7cEL._UF1000,1000_QL80_.jpg" alt=""> 
-            <h4>KeyCaps HammerHead Shark ABS</h4>   
-            <h5>$88.000</h5>
-            <input type="button" value="Agregar" onclick="agregarProducto(1)">
-            </div>
-            <div class="ficha">
-                        <img src="assets/img/86d6480d400307382f0d4d7de8825e60.webp" alt="">
-            <h4>KeyCaps Ajjaz Pro 75% ABS</h4>
-            <h5>$55.000</h5>
-            <input type="button" value="Agregar" onclick="agregarProducto(2)">
-            </div>
-            <div class="ficha">
-                        <img src="assets/img/Cupid-red-on-white-cherry-mx-keycap-keycaps-set-pbt-thock-king-mechanical-keyboard-keyboards-3.webp" alt="">
-            <h4>KeyCaps Cupid Cherry ABS</h4>
-            <h5>$110.000</h5>
-            <input type="button" value="Agregar" onclick="agregarProducto(3)">
-            </div>
-            <div class="ficha">
-                        <img src="assets/img/descarga.webp" alt="">
-            <h4>KeyCaps Fantech Nautilus ABS</h4>
-            <h5>$65.000</h5>
-            <input type="button" value="Agregar" onclick="agregarProducto(4)">
-            </div>
-            <div class="ficha">
-                        <img src="assets/img/MD-13559_20151130234208_b87df6bcdcec9702.jpg" alt="">
-            <h4>KeyCaps Thrine Thru Emblem ABS</h4>
-            <h5>$118.000</h5>
-            <input type="button" value="Agregar" onclick="agregarProducto(5)">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="productos.html" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Productos</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="teclados.html">Teclados</a></li>
+                            <li><a class="dropdown-item" href="keycaps.html">Key Caps</a></li>
+                            <li><a class="dropdown-item" href="switches.html">Switches</a></li>
+                            <li><a class="dropdown-item" href="cases.html">Cases</a></li> 
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contacto.html">Contacto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="nosotros.html">Sobre Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="ubicacion.html">Ubicacion</a>
+                    </li>
+                    <li class="nav-item me-3">
+                        <a class="nav-link position-relative" href="carrito.html">
+                            <img src="assets/img/carrito.jpg" alt="" style="width:24px;">
+                            <span id="contador" class="position-absolute top-50 start-100 translate-middle-y">0</span>
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>
 
+    <main>
+        <section class="productos">
+            <h1>Keycaps</h1>
+            <div id="productos-container" class="contenedor"></div>
+        </section>
+    </main>
 
-
-
-
-<script src="assets/js/main.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-document.querySelectorAll('.nav-item.dropdown').forEach(function(dropdown){
-  dropdown.addEventListener('mouseenter', function () {
-    let menu = this.querySelector('.dropdown-menu');
-    menu.classList.add('show');
-  });
-  dropdown.addEventListener('mouseleave', function () {
-    let menu = this.querySelector('.dropdown-menu');
-    menu.classList.remove('show');
-  });
-});
-</script>
-<script src="assets/js/carrito.js"> </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/data/productos.js"></script>
+    <script src="assets/js/carrito.js"></script>
     <script>
-        var listadoProductos=[
-            new Producto(1,"KeyCaps HammerHead Shark ABS",88000),
-            new Producto(2,"KeyCaps Ajjaz Pro 75% ABS",55000),
-            new Producto(3,"KeyCaps Cupid Cherry ABS",110000),
-            new Producto(4,"KeyCaps Fantech Nautilus ABS",65000),
-            new Producto(5,"KeyCaps Thrine Thru Emblem ABS",118000),
-        ]
-        function agregarProducto(id) {
-        var carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-        var producto = listadoProductos.find(p => p.id === id);
+        document.addEventListener('DOMContentLoaded', function() {
+            const container = document.getElementById('productos-container');
+            const keycaps = productos.filter(p => p.categoria === 'Keycaps');
 
-        if(producto) {
-            carrito.push(producto);
-            localStorage.setItem("carrito", JSON.stringify(carrito));
-            actualizarContador(); // Usa la función de carrito.js
-        }
-    }
+            if (keycaps.length === 0) {
+                container.innerHTML = '<p>No hay keycaps disponibles en este momento.</p>';
+                return;
+            }
+
+            keycaps.forEach(item => {
+                const ficha = `
+                    <a href="detalle-producto.html?id=${item.id}" class="ficha-link">
+                        <div class="ficha">
+                            <img src="${item.imagen}" alt="${item.nombre}">
+                            <h4>${item.nombre}</h4>
+                            <h5>$${item.precio.toLocaleString('es-CL')}</h5>
+                            <button class="btn btn-primary w-100">Ver Detalle</button>
+                        </div>
+                    </a>
+                `;
+                container.innerHTML += ficha;
+            });
+        });
     </script>
+    
 </body>
 </html>

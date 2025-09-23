@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KeyLab</title>
+    <title>Switches - KeyLab</title>
     <link rel="icon" href="assets/img/Logo2.ico">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/main.css">
@@ -11,176 +11,85 @@
 </head>
 <body>
 
-    <!-- Bonito Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="index.html">
-            <img src="assets/img/logokb.png" alt="logo " class="navbar-logo">
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
-            </li>
-            <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="productos.html" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Productos  
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-custom">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <img src="assets/img/logokb.png" alt="logo " class="navbar-logo">
             </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="teclados.html">Teclados</a></li>
-                <li><a class="dropdown-item" href="keycaps.html">Key Caps</a></li>
-                <li><a class="dropdown-item" href="switches.html">Switches</a></li>
-                <li><a class="dropdown-item" href="cases.html">Cases</a></li> 
-            </ul>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="contacto.html">Contacto</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="nosotros.html">Sobre Nosotros</a>
-            <li class="nav-item">
-            <a class="nav-link" href="ubicacion.html">Ubicacion</a>
-            </li>
-
-            <li class="nav-item me-3">
-              <a class="nav-link position-relative" href="carrito.html">
-                <img src="assets/img/carrito.jpg" alt="" style="width:24px;">
-                <span id="contador" 
-                      class="position-absolute top-50 start-100 translate-middle-y">
-                  
-                </span>
-              </a>
-            </li>
-
-        </ul>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="productos.html" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Productos</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="teclados.html">Teclados</a></li>
+                            <li><a class="dropdown-item" href="keycaps.html">Key Caps</a></li>
+                            <li><a class="dropdown-item" href="switches.html">Switches</a></li>
+                            <li><a class="dropdown-item" href="cases.html">Cases</a></li> 
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contacto.html">Contacto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="nosotros.html">Sobre Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="ubicacion.html">Ubicacion</a>
+                    </li>
+                    <li class="nav-item me-3">
+                        <a class="nav-link position-relative" href="carrito.html">
+                            <img src="assets/img/carrito.jpg" alt="" style="width:24px;">
+                            <span id="contador" class="position-absolute top-50 start-100 translate-middle-y">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
     </nav>
-<main>
-    <section class="productos">
-        <H1>Switches Lineales</H1>
-        <div class="contenedor">
-            <div class="ficha">
-                <img src="assets/img/GAME_1989_Classic-2_720x.webp" alt=""> 
-            <h4>Switches Lin Game 1989</h4>   
-            <h5>$25.000</h5>
-            <input type="button" value="Agregar" onclick="agregarProducto(1)">
-            </div>
-            <div class="ficha">
-                <img src="assets/img/switches_79fbaff5-ba04-4481-b8da-b30846b9ffbc_720x.webp" alt="">
-            <h4>Switches Lin Yellow</h4>
-            <h5>$18.000</h5>
-            <input type="button" value="Agregar" onclick="agregarProducto(2)">
-            </div>
-            <div class="ficha">
-                <img src="assets/img/V3-Piano-Pro-Switch-4_720x.webp" alt="">
-            <h4>Switches Lin Piano Pro</h4>
-            <h5>$36.000</h5>
-            <input type="button" value="Agregar" onclick="agregarProducto(3)">
-            </div>
-            <div class="ficha">
-                <img src="assets/img/Akko-Rosewood-Switch-XQ-Q-GX_720x.webp" alt="">
-            <h4>Switches Lin Akko RoseWood</h4>
-            <h5>$44.000</h5>
-            <input type="button" value="Agregar" onclick="agregarProducto(4)">
-            </div>
-            <div class="ficha">
-                <img src="assets/img/WS_Yellow_Switch_Lifestyle_2_720x.webp" alt="">
-            <h4>Switches Lin WS Yellow</h4>
-            <h5>$53.000</h5>
-            <input type="button" value="Agregar" onclick="agregarProducto(5)">
-            </div>
-        </div>
-    </section>
 
-    <section class="productos">
-        <H1>Switches Clicky</H1>
-        <div class="contenedor">
-            <div class="ficha">
-                <img src="assets/img/gateron-blue.jpg">
-                <h4>Switch Gateron Blue 90u</h4>
-                <h5>$24.990</h5>
-                <input type="button" value="Agregar" onclick="agregarProducto(6)">
-            </div>
-            <div class="ficha">
-                <img src="assets/img/KTT PURPLE.webp">
-                <h4>Switch KTT Purple 90u</h4>
-                <h5>$22.990</h5>
-                <input type="button" value="Agregar" onclick="agregarProducto(7)">
-            </div>
-        </div>
-    </section>
+    <main>
+        <section class="productos">
+            <h1>Switches</h1>
+            <div id="productos-container" class="contenedor"></div>
+        </section>
+    </main>
 
-    <section class="productos">
-        <H1>Switches tactiles</H1>
-        <div class="contenedor">
-            <div class="ficha">
-                <img src="assets/img/GATERONBROWN.jpg">
-                <h4>Switch Gateron Brown 90u</h4>
-                <h5>$20.000</h5>
-                <input type="button" value="Agregar" onclick="agregarProducto(8)">
-            </div>
-            <div class="ficha">
-                <img src="assets/img/GATERONRED.webp">
-                <h4>Switch Gateron Red 90u</h4>
-                <h5>$17.990</h5>
-                <input type="button" value="Agregar" onclick="agregarProducto(9)">
-            </div>
-        </div>
-    </section>
-</main>
-
-
-
-<script src="assets/js/main.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-document.querySelectorAll('.nav-item.dropdown').forEach(function(dropdown){
-  dropdown.addEventListener('mouseenter', function () {
-    let menu = this.querySelector('.dropdown-menu');
-    menu.classList.add('show');
-  });
-  dropdown.addEventListener('mouseleave', function () {
-    let menu = this.querySelector('.dropdown-menu');
-    menu.classList.remove('show');
-  });
-});
-</script>
-<script src="assets/js/carrito.js"> </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/data/productos.js"></script>
+    <script src="assets/js/carrito.js"></script>
     <script>
-        var listadoProductos=[
-            new Producto(1,"Switches Lin Game 1989",25000),
-            new Producto(2,"Switches Lin Yellow",18000),
-            new Producto(3,"Switches Lin Piano Pro",36000),
-            new Producto(4,"Switches Lin Akko RoseWood",44000),
-            new Producto(5,"Switches Lin WS Yellow",53000),
-            new Producto(6,"Switch Gateron Blue 90u",24990),
-            new Producto(7,"Switch KTT Purple 90u",22990),
-            new Producto(8,"Switch Gateron Brown 90u",20000),
-            new Producto(9,"Switch Gateron Red 90u",17990)
-        ]
-        function agregarProducto(id) {
-        var carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-        var producto = listadoProductos.find(p => p.id === id);
+        document.addEventListener('DOMContentLoaded', function() {
+            const container = document.getElementById('productos-container');
+            const switches = productos.filter(p => p.categoria === 'Switches');
 
-        if(producto) {
-            carrito.push(producto);
-            localStorage.setItem("carrito", JSON.stringify(carrito));
-            actualizarContador(); // Usa la función de carrito.js
-        }
-    }function agregarProducto(id) {
-        var carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-        var producto = listadoProductos.find(p => p.id === id);
+            if (switches.length === 0) {
+                container.innerHTML = '<p>No hay switches disponibles en este momento.</p>';
+                return;
+            }
 
-        if(producto) {
-            carrito.push(producto);
-            localStorage.setItem("carrito", JSON.stringify(carrito));
-            actualizarContador(); // Usa la función de carrito.js
-        }
-    }
+            switches.forEach(item => {
+                const ficha = `
+                    <a href="detalle-producto.html?id=${item.id}" class="ficha-link">
+                        <div class="ficha">
+                            <img src="${item.imagen}" alt="${item.nombre}">
+                            <h4>${item.nombre}</h4>
+                            <h5>$${item.precio.toLocaleString('es-CL')}</h5>
+                            <button class="btn btn-primary w-100">Ver Detalle</button>
+                        </div>
+                    </a>
+                `;
+                container.innerHTML += ficha;
+            });
+        });
     </script>
+    
 </body>
 </html>
