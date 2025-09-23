@@ -11,23 +11,14 @@
 </head>
 <body>
 
-    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-custom">
         <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">
-                <img src="assets/img/logokb.png" alt="logo " class="navbar-logo">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
+            <a class="navbar-brand" href="index.html"><img src="assets/img/logokb.png" alt="logo " class="navbar-logo"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Inicio</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle active" href="productos.html" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Productos</a>
+                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                    <li class="nav-item dropdown"><a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">Productos</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="teclados.html">Teclados</a></li>
                             <li><a class="dropdown-item" href="keycaps.html">Key Caps</a></li>
@@ -35,21 +26,10 @@
                             <li><a class="dropdown-item" href="cases.html">Cases</a></li> 
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contacto.html">Contacto</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="nosotros.html">Sobre Nosotros</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="ubicacion.html">Ubicacion</a>
-                    </li>
-                    <li class="nav-item me-3">
-                        <a class="nav-link position-relative" href="carrito.html">
-                            <img src="assets/img/carrito.jpg" alt="" style="width:24px;">
-                            <span id="contador" class="position-absolute top-50 start-100 translate-middle-y">0</span>
-                        </a>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+                    <li class="nav-item"><a class="nav-link" href="nosotros.html">Sobre Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link" href="ubicacion.html">Ubicacion</a></li>
+                    <li class="nav-item me-3"><a class="nav-link position-relative" href="carrito.html"><img src="assets/img/carrito.jpg" alt="" style="width:24px;"><span id="contador" class="position-absolute top-50 start-100 translate-middle-y">0</span></a></li>
                 </ul>
             </div>
         </div>
@@ -58,43 +38,63 @@
     <main>
         <section class="productos">
             <h1>Teclados</h1>
-            <!-- El contenedor se llenará dinámicamente -->
             <div id="productos-container" class="contenedor"></div>
         </section>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/data/productos.js"></script> <!-- Carga la fuente de datos -->
+    <script src="assets/data/productos.js"></script>
     <script src="assets/js/carrito.js"></script>
     <script>
+        // --- LÓGICA DE LA PÁGINA ---
         document.addEventListener('DOMContentLoaded', function() {
             const container = document.getElementById('productos-container');
-            
-            
-            const teclados = productos.filter(p => p.categoria === 'Teclados');
+            const productosParaMostrar = JSON.parse(localStorage.getItem('productos')) || productos;
+            const teclados = productosParaMostrar.filter(p => p.categoria === 'Teclados');
 
             if (teclados.length === 0) {
-                container.innerHTML = '<p>No hay teclados disponibles en este momento.</p>';
+                container.innerHTML = '<p>No hay teclados disponibles.</p>';
                 return;
             }
 
-            
             teclados.forEach(teclado => {
-                const ficha = `
-                    <a href="detalle-producto.html?id=${teclado.id}" class="ficha-link">
-                        <div class="ficha">
-                            <img src="${teclado.imagen}" alt="${teclado.nombre}">
-                            <h4>${teclado.nombre}</h4>
-                            <h5>$${teclado.precio.toLocaleString('es-CL')}</h5>
-                            <button class="btn btn-primary w-100">Ver Detalle</button>
-                        </div>
-                    </a>
-                `;
-                container.innerHTML += ficha;
+                const fichaWrapper = document.createElement('div');
+                fichaWrapper.className = 'ficha';
+
+                const fichaLink = document.createElement('a');
+                fichaLink.href = `detalle-producto.html?id=${teclado.id}`;
+                fichaLink.innerHTML = `<img src="${teclado.imagen}" alt="${teclado.nombre}">`;
+                
+                const nombre = document.createElement('h4');
+                nombre.textContent = teclado.nombre;
+
+                const precio = document.createElement('h5');
+                precio.textContent = `$${teclado.precio.toLocaleString('es-CL')}`;
+
+                const boton = document.createElement('button');
+                boton.className = 'btn btn-primary w-100';
+                boton.textContent = 'Añadir al Carrito';
+                boton.addEventListener('click', () => {
+                    window.agregarAlCarrito(teclado.id);
+                });
+
+                const botonDetalle = document.createElement('button');
+                botonDetalle.className = 'btn btn-secondary w-100 mt-2';
+                botonDetalle.textContent = 'Ver Detalle';
+                botonDetalle.addEventListener('click', () => {
+                    window.location.href = `detalle-producto.html?id=${teclado.id}`;
+                });
+
+                fichaWrapper.appendChild(fichaLink);
+                fichaWrapper.appendChild(nombre);
+                fichaWrapper.appendChild(precio);
+                fichaWrapper.appendChild(boton);
+                fichaWrapper.appendChild(botonDetalle);
+                container.appendChild(fichaWrapper);
             });
         });
 
-        // Script hover dropdown 
+        // --- LÓGICA DE LA NAVBAR ---
         document.querySelectorAll('.nav-item.dropdown').forEach(function(dropdown){
             dropdown.addEventListener('mouseenter', function () {
                 let menu = this.querySelector('.dropdown-menu');
@@ -106,6 +106,5 @@
             });
         });
     </script>
-    
 </body>
 </html>
