@@ -535,3 +535,76 @@ main {
   font-size: 0.8rem;  
   margin-top: 4px;
 }
+
+/* FICHA PRODUCTO - DETALLE PRODUCTO */
+
+.detalle-body {
+  background-color: #000; /* fondo negro general */
+  font-family: 'Jersey 10', monospace;
+}
+
+.ficha-detalle {
+  display: flex;
+  flex-direction: column; /* para que la descripcion quede abajo */
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #fff; /* rectángulo blanco */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  gap: 20px;
+}
+
+.detalle-superior {
+  display: flex;
+  gap: 20px;
+}
+
+.detalle-imagen {
+  flex: 0 0 300px; /* tamaño fijo razonable */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.producto-imagen {
+  max-width: 100%;
+  max-height: 250px; /* limita altura */
+  border-radius: 6px;
+  object-fit: contain;
+}
+
+.detalle-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.producto-nombre {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  font-family: 'Jersey 10', monospace;
+  color: #000;
+}
+
+.producto-precio {
+  font-size: 1.9rem;
+  font-weight: bold;
+  color: #111;
+  font-family: 'Jersey 10', monospace;
+  margin-bottom: 10px;
+}
+
+.producto-descripcion {
+  font-size: 1rem;
+  font-family: 'Jersey 10', monospace;
+  margin-top: 20px;
+  color: #000;
+}
+
+.btn {
+  width: fit-content;
+  padding: 10px 20px;
+  font-size: 1rem;
+}
