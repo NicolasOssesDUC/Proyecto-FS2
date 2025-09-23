@@ -1,39 +1,36 @@
-// Obtener el parámetro ?id= de la URL
-const params = new URLSearchParams(window.location.search);
-const id = parseInt(params.get("id"));
-
-// Buscar el producto en el array de productos
-// Si tu array 'productos' ya está definido en otro archivo JS, asegúrate de importarlo antes
-const producto = productos.find(p => p.id === id);
-
-if (producto) {
-    document.getElementById("nombre").textContent = producto.nombre;
-    document.getElementById("descripcion").textContent = producto.descripcion || "Sin descripción disponible";
-    document.getElementById("precio").textContent = `$${producto.precio.toLocaleString('es-CL')}`;
-    document.getElementById("imagen").src = producto.imagen;
-} else {
-    document.getElementById("producto-detalle").innerHTML = "<p>Producto no encontrado</p>";
-}
-
 document.addEventListener('DOMContentLoaded', function() {
+    // 1. Obtener el ID del producto desde la URL
     const params = new URLSearchParams(window.location.search);
     const productoId = parseInt(params.get('id'));
 
-    // Buscar el producto en tu array productos
-    const producto = productos.find(p => p.id === productoId);
-    if (!producto) return;
+    
+    if (isNaN(productoId)) {
+        document.getElementById('producto-detalle').innerHTML = '<div class="alert alert-danger">Error: Producto no especificado.</div>';
+        return;
+    }
 
-    // Rellenar el HTML con los datos
-    document.getElementById('imagen').src = producto.imagen;
+    // 2. Buscar el producto 
+    const productosParaBuscar = JSON.parse(localStorage.getItem('productos')) || productos;
+    const producto = productosParaBuscar.find(p => p.id === productoId);
+
+    // 3. Si el producto no se encuentra, mostrar un mensaje
+    if (!producto) {
+        document.getElementById('producto-detalle').innerHTML = '<div class="alert alert-danger">Producto no encontrado.</div>';
+        return;
+    }
+
+    // 4. Rellenar la página 
     document.getElementById('nombre').textContent = producto.nombre;
     document.getElementById('precio').textContent = `$${producto.precio.toLocaleString('es-CL')}`;
-    document.getElementById('descripcion').textContent = producto.descripcion;
+    document.getElementById('imagen').src = producto.imagen;
+    document.getElementById('imagen').alt = producto.nombre;
+    document.getElementById('descripcion').textContent = producto.descripcion || 'Este producto no tiene una descripción disponible.';
 
-    // Botón "Agregar al carrito"
+    // botón "Agregar al Carrito"
     const btnCarrito = document.getElementById('btn-carrito');
     if (btnCarrito) {
         btnCarrito.addEventListener('click', () => {
-            agregarAlCarrito(productoId); // usa tu JS de carrito ya definido
+            window.agregarAlCarrito(producto.id);
         });
     }
 });

@@ -11,23 +11,14 @@
 </head>
 <body>
 
-    <!-- Navbar Completa -->
     <nav class="navbar navbar-expand-lg navbar-light bg-custom">
         <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">
-                <img src="assets/img/logokb.png" alt="logo " class="navbar-logo">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
+            <a class="navbar-brand" href="index.html"><img src="assets/img/logokb.png" alt="logo " class="navbar-logo"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Inicio</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle active" href="productos.html" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Productos</a>
+                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                    <li class="nav-item dropdown"><a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">Productos</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="teclados.html">Teclados</a></li>
                             <li><a class="dropdown-item" href="keycaps.html">Key Caps</a></li>
@@ -35,21 +26,10 @@
                             <li><a class="dropdown-item" href="cases.html">Cases</a></li> 
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contacto.html">Contacto</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="nosotros.html">Sobre Nosotros</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="ubicacion.html">Ubicacion</a>
-                    </li>
-                    <li class="nav-item me-3">
-                        <a class="nav-link position-relative" href="carrito.html">
-                            <img src="assets/img/carrito.jpg" alt="" style="width:24px;">
-                            <span id="contador" class="position-absolute top-50 start-100 translate-middle-y">0</span>
-                        </a>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+                    <li class="nav-item"><a class="nav-link" href="nosotros.html">Sobre Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link" href="ubicacion.html">Ubicacion</a></li>
+                    <li class="nav-item me-3"><a class="nav-link position-relative" href="carrito.html"><img src="assets/img/carrito.jpg" alt="" style="width:24px;"><span id="contador" class="position-absolute top-50 start-100 translate-middle-y">0</span></a></li>
                 </ul>
             </div>
         </div>
@@ -66,12 +46,14 @@
     <script src="assets/data/productos.js"></script>
     <script src="assets/js/carrito.js"></script>
     <script>
+        // --- LÓGICA DE LA PÁGINA ---
         document.addEventListener('DOMContentLoaded', function() {
             const container = document.getElementById('productos-container');
-            const teclados = productos.filter(p => p.categoria === 'Teclados');
+            const productosParaMostrar = JSON.parse(localStorage.getItem('productos')) || productos;
+            const teclados = productosParaMostrar.filter(p => p.categoria === 'Teclados');
 
             if (teclados.length === 0) {
-                container.innerHTML = '<p>No hay teclados disponibles en este momento.</p>';
+                container.innerHTML = '<p>No hay teclados disponibles.</p>';
                 return;
             }
 
@@ -93,7 +75,7 @@
                 boton.className = 'btn btn-primary w-100';
                 boton.textContent = 'Añadir al Carrito';
                 boton.addEventListener('click', () => {
-                    agregarAlCarrito(teclado.id);
+                    window.agregarAlCarrito(teclado.id);
                 });
 
                 const botonDetalle = document.createElement('button');
@@ -106,25 +88,23 @@
                 fichaWrapper.appendChild(fichaLink);
                 fichaWrapper.appendChild(nombre);
                 fichaWrapper.appendChild(precio);
-                fichaWrapper.appendChild(boton);        // Añadir al carrito
+                fichaWrapper.appendChild(boton);
                 fichaWrapper.appendChild(botonDetalle);
                 container.appendChild(fichaWrapper);
             });
         });
+
+        // --- LÓGICA DE LA NAVBAR ---
+        document.querySelectorAll('.nav-item.dropdown').forEach(function(dropdown){
+            dropdown.addEventListener('mouseenter', function () {
+                let menu = this.querySelector('.dropdown-menu');
+                menu.classList.add('show');
+            });
+            dropdown.addEventListener('mouseleave', function () {
+                let menu = this.querySelector('.dropdown-menu');
+                menu.classList.remove('show');
+            });
+        });
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-    document.querySelectorAll('.nav-item.dropdown').forEach(function(dropdown){
-    dropdown.addEventListener('mouseenter', function () {
-        let menu = this.querySelector('.dropdown-menu');
-        menu.classList.add('show');
-    });
-    dropdown.addEventListener('mouseleave', function () {
-        let menu = this.querySelector('.dropdown-menu');
-        menu.classList.remove('show');
-    });
-    });
-    </script>
-    
 </body>
 </html>

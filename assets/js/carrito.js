@@ -1,24 +1,21 @@
 // --- LÓGICA DEL CARRITO DE COMPRAS ---
 
-
 window.obtenerCarrito = function() {
     return JSON.parse(localStorage.getItem('carrito')) || [];
 }
 
 window.guardarCarrito = function(carrito) {
     localStorage.setItem('carrito', JSON.stringify(carrito));
-    window.actualizarContador(); 
+    window.actualizarContador();
 }
 
 window.agregarAlCarrito = function(idProducto) {
-    if (typeof productos === 'undefined') {
-        console.error('La lista de productos no está disponible.');
-        return;
-    }
+    // BUSCAMOS EN LOCALSTORAGE
+    const productosMaestros = JSON.parse(localStorage.getItem('productos')) || [];
+    const productoAAgregar = productosMaestros.find(p => p.id === idProducto);
 
-    const productoMaestro = productos.find(p => p.id === idProducto);
-    if (!productoMaestro) {
-        console.error(`Producto con ID ${idProducto} no encontrado.`);
+    if (!productoAAgregar) {
+        console.error(`Producto con ID ${idProducto} no encontrado en localStorage.`);
         return;
     }
 
@@ -28,12 +25,12 @@ window.agregarAlCarrito = function(idProducto) {
     if (itemEnCarrito) {
         itemEnCarrito.cantidad++;
     } else {
-        const nuevoItem = { ...productoMaestro, cantidad: 1 };
+        const nuevoItem = { ...productoAAgregar, cantidad: 1 };
         carrito.push(nuevoItem);
     }
 
     window.guardarCarrito(carrito);
-    alert(`'${productoMaestro.nombre}' ha sido añadido al carrito.`);
+    alert(`'${productoAAgregar.nombre}' ha sido añadido al carrito.`);
 }
 
 window.eliminarItemDelCarrito = function(index) {
