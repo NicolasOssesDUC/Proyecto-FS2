@@ -59,22 +59,39 @@
     </div>
     </nav>
 
-    <nav class="separador-navbar">
-        <div class="productos">
-            <H1>Cases Full size</H1>
-
-
+    <main>
+        <section class="productos">
             <H1>Cases 80%</H1>
+              <div class="contenedor">
+                <div class="ficha">
+                  <img src="assets/img/Holy80_.webp" alt="">
+                  <h4>Case Holy 80% EVA Edition</h4>
+                  <h5>$100.000</h5>
+                  <input type="button" value="Agregar" onclick="agregarProducto(1)">
+                </div>
+              </div>
+        </section>
 
 
-            <H1>Cases 75%</H1>
-
-
+        <section class="productos">
             <H1>Cases 60%</H1>
-
-
-        </div>
-    </nav>
+              <div class="contenedor">
+                <div class="ficha">
+                  <img src="assets/img/tofu60_.webp" alt="">
+                  <h4>Case Tofu 60% Black</h4>
+                  <h5>69.990</h5>
+                  <input type="button" value="Agregar" onclick="agregarProducto(2)">
+                </div>
+                <div class="ficha">
+                  <img src="assets/img/Holy60_.webp" alt="">
+                  <h4>Case Holy 60% Black</h4>
+                  <h5>59.990</h5>
+                  <input type="button" value="Agregar" onclick="agregarProducto(3)">
+                </div>
+              </div>
+        </section>
+      </main>
+    
 
 <script src="assets/js/main.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -90,6 +107,29 @@ document.querySelectorAll('.nav-item.dropdown').forEach(function(dropdown){
     menu.classList.remove('show');
   });
 });
+</script>
+
+<script>
+  var listadoProductos = [
+    new Producto(1,"Case Holy 80% EVA Edition",100000),
+    new Producto(2,"Case Tofu 60% Black",69990),
+    new Producto(3,"Case Holy 60% Black",59990)
+  ];
+
+  function agregarProducto(id) {
+        var carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+        var producto = listadoProductos.find(p => p.id === id);
+
+        if(producto) {
+            carrito.push(producto);
+            localStorage.setItem("carrito", JSON.stringify(carrito));
+            actualizarContador(); // Usa la función de carrito.js
+        }
+    }
+
+
+
+
 </script>
 </body>
 </html>

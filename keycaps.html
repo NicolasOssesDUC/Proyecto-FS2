@@ -125,32 +125,16 @@ document.querySelectorAll('.nav-item.dropdown').forEach(function(dropdown){
             new Producto(4,"KeyCaps Fantech Nautilus ABS",65000),
             new Producto(5,"KeyCaps Thrine Thru Emblem ABS",118000),
         ]
-        localStorage.setItem("productos",JSON.stringify(listadoProductos));
+        function agregarProducto(id) {
+        var carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+        var producto = listadoProductos.find(p => p.id === id);
 
-        function agregarProducto(id){
-            console.log(id);
-            console.log(listadoProductos[id-1]);
-
-            var contador=parseInt(document.getElementById("contador").innerHTML);
-            contador=contador+1
-            document.getElementById("contador").innerHTML=contador;
-            var total=parseInt(document.getElementById("total").innerHTML);
-            total=total+listadoProductos[id-1]["precio"]
-            document.getElementById("total").innerHTML=total;
-            
-            var carrito=JSON.parse(localStorage.getItem("carrito"));
-            if(!carrito){
-                console.log("No hay carrito");
-                carrito=[
-                    listadoProductos[id-1]
-                ]
-                localStorage.setItem("carrito",JSON.stringify(carrito));
-            }else{
-                    console.log("Hay carrito");
-                    carrito.push(listadoProductos[id-1]);
-                    localStorage.setItem("carrito",JSON.stringify(carrito));
-                }
+        if(producto) {
+            carrito.push(producto);
+            localStorage.setItem("carrito", JSON.stringify(carrito));
+            actualizarContador(); // Usa la función de carrito.js
         }
+    }
     </script>
 </body>
 </html>
